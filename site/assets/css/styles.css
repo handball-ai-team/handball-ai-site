@@ -140,7 +140,7 @@ textarea {
   background:
     linear-gradient(90deg, rgba(8, 9, 24, 0.92) 0%, rgba(8, 9, 24, 0.72) 34%, rgba(8, 9, 24, 0.18) 68%, rgba(8, 9, 24, 0.06) 100%),
     linear-gradient(180deg, rgba(8, 9, 24, 0.16) 0%, rgba(8, 9, 24, 0.64) 100%),
-    url("../img/hero-admin-chaos.png") center / cover no-repeat;
+    url("../img/hero-admin-chaos.webp") center / cover no-repeat;
 }
 
 .hero-layout {
@@ -812,7 +812,7 @@ textarea {
     padding: 64px 0 42px;
     background:
       linear-gradient(180deg, rgba(8, 9, 24, 0.9) 0%, rgba(8, 9, 24, 0.72) 52%, rgba(8, 9, 24, 0.54) 100%),
-      url("../img/hero-admin-chaos.png") 58% center / cover no-repeat;
+      url("../img/hero-admin-chaos.webp") 58% center / cover no-repeat;
   }
 
   .hero h1 {
