@@ -1,3 +1,7 @@
 .DS_Store
 .ai-cowork/
 .firecrawl/
+.claude/
+AGENTS.md
+AI_HANDOFF.md
+CLAUDE.md
