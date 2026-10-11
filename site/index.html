@@ -6,272 +6,917 @@
     <title>Handball AI - AI help for small business admin</title>
     <meta name="description" content="Handball AI sets up practical AI tools for Australian small businesses: missed enquiries, customer replies, paperwork, and handoffs.">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
   </head>
   <body>
-    <header class="site-header">
-      <a class="brand" href="#top" aria-label="Handball AI home">
-        <span class="brand-mark">H</span>
-        <span>Handball AI</span>
-      </a>
-
-      <nav class="site-nav" aria-label="Main navigation">
-        <a href="#services">Services</a>
-        <a href="#process">How it works</a>
-        <a href="#team">Team</a>
-      </nav>
-
-      <a class="button button-secondary nav-cta" href="mailto:hello@handballai.com.au?subject=Free%2015-minute%20chat">Email us</a>
-    </header>
-
-    <main id="top">
-      <section class="hero section-wrap">
-        <p class="eyebrow"><span></span> AI setup for Aussie small businesses</p>
-        <h1>Handball the admin. Keep the jobs.</h1>
-        <p class="hero-copy">We set up simple AI tools that answer customers, catch missed enquiries, and sort the paperwork, so you can get back to the work.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="mailto:hello@handballai.com.au?subject=Free%2015-minute%20chat">Book a free 15-minute chat</a>
-          <a class="button button-secondary" href="#showcase">See the setup</a>
-        </div>
-        <p class="micro-copy">No prices on the page. No hard sell. Just a practical chat about what is annoying you.</p>
-      </section>
-
-      <section class="showcase section-wrap" id="showcase" aria-label="Handball AI product example">
-        <div class="product-frame">
-          <div class="product-tabs" role="tablist" aria-label="Example workflows">
-            <button class="product-tab active" type="button" role="tab" aria-selected="true" data-panel="enquiries">Inquiry handling</button>
-            <button class="product-tab" type="button" role="tab" aria-selected="false" data-panel="jobs">Jobs and handoff</button>
-            <button class="product-tab" type="button" role="tab" aria-selected="false" data-panel="paperwork">Paperwork</button>
-          </div>
-
-          <div class="product-panel active" id="panel-enquiries" data-panel-content="enquiries">
-            <div class="inbox-card">
-              <div class="card-header">
-                <div>
-                  <p class="label">Today</p>
-                  <h2>New enquiries</h2>
-                </div>
-                <span class="status-pill">3 need action</span>
-              </div>
-              <div class="lead-list">
-                <article class="lead-row urgent">
-                  <span class="avatar">AM</span>
-                  <div>
-                    <strong>Amy Miller</strong>
-                    <p>Leaking tap, needs someone this week.</p>
-                  </div>
-                  <span>Urgent</span>
-                </article>
-                <article class="lead-row">
-                  <span class="avatar">JR</span>
-                  <div>
-                    <strong>Josh Ryan</strong>
-                    <p>Asked if after-hours callouts are available.</p>
-                  </div>
-                  <span>Website</span>
-                </article>
-                <article class="lead-row">
-                  <span class="avatar">SK</span>
-                  <div>
-                    <strong>Sam Kaur</strong>
-                    <p>Prefers Tuesday morning for a quote.</p>
-                  </div>
-                  <span>SMS</span>
-                </article>
-              </div>
-            </div>
-
-            <div class="action-card">
-              <p class="label">Suggested action</p>
-              <h3>Send Mark the job summary</h3>
-              <p>Customer name, problem, urgency, suburb, preferred time, and what the AI already replied.</p>
-              <div class="summary-box">
-                <span>Ready for human follow-up</span>
-                <strong>WhatsApp handoff</strong>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-panel" id="panel-jobs" data-panel-content="jobs">
-            <div class="schedule-card">
-              <div class="card-header">
-                <div>
-                  <p class="label">Job board</p>
-                  <h2>Booked and pending</h2>
-                </div>
-                <span class="status-pill">Human checked</span>
-              </div>
-              <div class="schedule-grid">
-                <article>
-                  <span>8:30</span>
-                  <strong>Leak check</strong>
-                  <p>Bondi - details confirmed</p>
-                </article>
-                <article>
-                  <span>10:00</span>
-                  <strong>Quote request</strong>
-                  <p>Parramatta - awaiting approval</p>
-                </article>
-                <article>
-                  <span>2:00</span>
-                  <strong>Follow-up call</strong>
-                  <p>Newtown - Mark to call back</p>
-                </article>
-              </div>
-            </div>
-            <div class="action-card">
-              <p class="label">Guardrail</p>
-              <h3>AI does not pretend to be you</h3>
-              <p>When the answer needs judgement, price, or a promise, it hands the conversation to a person.</p>
-            </div>
-          </div>
-
-          <div class="product-panel" id="panel-paperwork" data-panel-content="paperwork">
-            <div class="paperwork-card">
-              <div class="card-header">
-                <div>
-                  <p class="label">Admin queue</p>
-                  <h2>Paperwork sorted</h2>
-                </div>
-                <span class="status-pill">Drafts ready</span>
-              </div>
-              <ul class="task-list">
-                <li><span></span> Quote draft created from job notes</li>
-                <li><span></span> Customer follow-up ready to review</li>
-                <li><span></span> Timesheet reminder sent</li>
-                <li><span></span> Form details copied into the right place</li>
-              </ul>
-            </div>
-            <div class="action-card">
-              <p class="label">Outcome</p>
-              <h3>Less admin after hours</h3>
-              <p>The goal is not fancy AI. It is fewer loose ends at the end of the day.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-band" id="services">
-        <div class="section-wrap split-head">
-          <div>
-            <p class="kicker">Services</p>
-            <h2>Start with the jobs that leak money or time.</h2>
-          </div>
-          <p>Handball AI is not trying to replace your business. It catches the repetitive stuff around the edges, then hands over when a human should step in.</p>
-        </div>
-
-        <div class="section-wrap service-grid">
-          <article class="service-card">
-            <span class="service-icon">01</span>
-            <h3>Never miss a customer</h3>
-            <p>AI can answer missed calls, texts, and website questions, then send the important details to you.</p>
-          </article>
-          <article class="service-card">
-            <span class="service-icon">02</span>
-            <h3>A website that answers back</h3>
-            <p>A simple assistant can answer common questions about services, hours, locations, and next steps.</p>
-          </article>
-          <article class="service-card">
-            <span class="service-icon">03</span>
-            <h3>Paperwork off your plate</h3>
-            <p>Quotes, invoices, forms, timesheets, and follow-ups can be turned into drafts instead of chores.</p>
-          </article>
-          <article class="service-card">
-            <span class="service-icon">04</span>
-            <h3>Custom automations</h3>
-            <p>If there is a repeat admin job eating your week, we can usually automate part of it.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section-wrap process" id="process">
-        <div class="section-heading">
-          <p class="kicker">How it works</p>
-          <h2>Small first. Useful fast.</h2>
-        </div>
-        <div class="process-grid">
-          <article>
-            <span>1</span>
-            <h3>Tell us what is annoying you.</h3>
-            <p>Missed calls, late replies, forms, follow-ups, or the admin job you keep putting off.</p>
-          </article>
-          <article>
-            <span>2</span>
-            <h3>We suggest a simple setup.</h3>
-            <p>You see what the AI should handle, what needs approval, and where the handoff happens.</p>
-          </article>
-          <article>
-            <span>3</span>
-            <h3>We build it and hand it over.</h3>
-            <p>Jimmy builds the system. Mark stays close so the setup makes sense for the business.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section-band team-band" id="team">
-        <div class="section-wrap team-grid">
-          <div class="section-heading">
-            <p class="kicker">Who you deal with</p>
-            <h2>Real people before AI.</h2>
-            <p>Trust matters when customer conversations are involved. Handball AI keeps the human layer visible.</p>
-          </div>
-          <div class="people-cards">
-            <article>
-              <div class="person-photo">M</div>
-              <h3>Mark</h3>
-              <p>Your local contact. Talks it through with you and helps decide what is worth automating first.</p>
-            </article>
-            <article>
-              <div class="person-photo">J</div>
-              <h3>Jimmy</h3>
-              <p>The builder. 10+ years in Aussie construction, now building AI systems for practical admin problems.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-wrap faq">
-        <div class="section-heading">
-          <p class="kicker">Good to know</p>
-          <h2>Built with guardrails.</h2>
-        </div>
-        <div class="faq-grid">
-          <article>
-            <h3>Will AI replace my staff?</h3>
-            <p>No. We use it for repetitive admin and customer triage, with handoff when a person should decide.</p>
-          </article>
-          <article>
-            <h3>Can I approve important replies?</h3>
-            <p>Yes. Anything involving price, bookings, or promises can be set up for review first.</p>
-          </article>
-          <article>
-            <h3>Does it work with my current tools?</h3>
-            <p>Usually. We start with what you already use and keep the first version narrow.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="final-cta">
-        <div class="section-wrap">
-          <p class="eyebrow"><span></span> Free 15-minute chat</p>
-          <h2>Got one admin job that keeps eating your week?</h2>
-          <p>Send us a quick note. We will tell you what AI could realistically help with and what should stay human.</p>
-          <a class="button button-primary" href="mailto:hello@handballai.com.au?subject=Free%2015-minute%20chat">Email hello@handballai.com.au</a>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="section-wrap footer-inner">
+    <header class="site-header" data-theme="dark">
+      <div class="nav-shell">
         <a class="brand" href="#top" aria-label="Handball AI home">
           <span class="brand-mark">H</span>
           <span>Handball AI</span>
         </a>
-        <p>Based in Australia. Built with care.</p>
-        <a href="mailto:hello@handballai.com.au">hello@handballai.com.au</a>
+
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="#services">Workflows</a>
+          <a href="#industries">Who it helps</a>
+          <a href="#process">How it works</a>
+          <a href="#example">Example</a>
+          <a href="#faq">Questions</a>
+        </nav>
+
+        <a class="nav-cta" href="#contact">Let's talk <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="section-wrap hero-layout">
+          <div class="hero-copy-block">
+            <p class="eyebrow"><span></span> AI setup for Aussie small businesses</p>
+            <h1>Show us your workflow. We'll automate the boring bits.</h1>
+            <p class="hero-copy">Practical AI automation for calls, forms, follow-ups, paperwork, websites, and the repeat jobs that waste your week.</p>
+            <a class="hero-scroll" href="#example">See it in action <span aria-hidden="true">&darr;</span></a>
+          </div>
+
+          <aside class="hero-proof run" aria-label="Example automation">
+            <div class="run-head">
+              <span class="run-live"><i></i> Example run</span>
+              <span class="run-day">Tue night</span>
+            </div>
+            <h2>Missed enquiry <span>&rarr;</span> call-back sorted</h2>
+            <div class="run-bar"><span></span></div>
+            <ol class="run-steps">
+              <li class="run-step" style="--i:0">
+                <span class="run-ico" aria-hidden="true">📞</span>
+                <span class="run-txt">Missed call while you're on a job</span>
+                <span class="run-time">8:47pm</span>
+              </li>
+              <li class="run-step" style="--i:1">
+                <span class="run-ico" aria-hidden="true">💬</span>
+                <span class="run-txt">Texted back. Asked your 3 usual questions</span>
+                <span class="run-time">8:48pm</span>
+              </li>
+              <li class="run-step" style="--i:2">
+                <span class="run-ico" aria-hidden="true">📝</span>
+                <span class="run-txt">Answers saved to your job sheet</span>
+                <span class="run-time">8:52pm</span>
+              </li>
+              <li class="run-step" style="--i:3">
+                <span class="run-ico" aria-hidden="true">📲</span>
+                <span class="run-txt">Tidy summary sent to your phone</span>
+                <span class="run-time">8:52pm</span>
+              </li>
+              <li class="run-step run-you" style="--i:4">
+                <span class="run-ico" aria-hidden="true">👤</span>
+                <span class="run-txt"><strong>You:</strong> call them back at 9am</span>
+                <span class="run-tag">Your call</span>
+              </li>
+            </ol>
+            <p class="run-foot">AI does the first four. <strong>You only do the last one.</strong></p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section-band pain-band wfx" id="services">
+        <div class="section-wrap split-head">
+          <div>
+            <p class="kicker">Where automation usually helps</p>
+            <h2>Find the jobs <span class="tag-hl">leaking</span> your time.</h2>
+            <span class="scribble">(we've all got a few)</span>
+          </div>
+          <p>You don't need to know the tech. Show us what comes in, what you check, what you copy, and what you send back.</p>
+        </div>
+
+        <div class="section-wrap bento">
+          <!-- 1. Enquiries (wide) -->
+          <article class="bx bx-wide bx-enq">
+            <div class="bx-copy">
+              <span class="bx-tag"><i aria-hidden="true">📞</i> Customer enquiries</span>
+              <h3>"I miss calls when I'm flat out."</h3>
+              <p>AI replies fast, asks the basics, and hands you a tidy summary with the next step.</p>
+              <ul class="bx-chips"><li>Calls</li><li>Messages</li><li>Bookings</li><li>Quote requests</li></ul>
+            </div>
+            <div class="bx-vis vis-enq" aria-hidden="true">
+              <div class="note n-a"><b>📞 Missed call</b><span>0412 ••• ••• · 8:47pm</span></div>
+              <div class="note n-b"><b>📝 New form</b><span>"Need a quote for Friday"</span></div>
+              <div class="note n-c"><b>💬 Message</b><span>"Are you open Saturday?"</span></div>
+              <div class="vis-arrow">&darr;</div>
+              <div class="note n-done"><b>✓ 3 enquiries summarised</b><span>Sent to your phone. Call back list ready.</span></div>
+            </div>
+          </article>
+
+          <!-- 2. Paperwork -->
+          <article class="bx bx-paper">
+            <span class="bx-tag"><i aria-hidden="true">🧾</i> Paperwork</span>
+            <h3>"I retype the same stuff into every form."</h3>
+            <div class="bx-vis vis-doc" aria-hidden="true">
+              <div class="doc">
+                <span class="l w80"></span><span class="l w60"></span><span class="l w90"></span><span class="l w40"></span><span class="l w70"></span>
+                <span class="stamp">Draft ready</span>
+              </div>
+            </div>
+            <p>Forms, quotes, invoices, reports. Turned into drafts you check, not start from scratch.</p>
+          </article>
+
+          <!-- 3. Follow-up -->
+          <article class="bx bx-follow">
+            <span class="bx-tag"><i aria-hidden="true">⏰</i> Follow-up</span>
+            <h3>"Good leads go cold because I forget."</h3>
+            <div class="bx-vis vis-follow" aria-hidden="true">
+              <div class="fu done"><span>Day 1</span> Thanks for asking <em>✓</em></div>
+              <div class="fu done"><span>Day 3</span> Quick check-in <em>✓</em></div>
+              <div class="fu next"><span>Day 7</span> Last nudge <em>⏰</em></div>
+            </div>
+            <p>Reminders, reviews, unpaid invoices. Sent on time, every time.</p>
+          </article>
+
+          <!-- 4. Websites -->
+          <article class="bx bx-web">
+            <span class="bx-tag"><i aria-hidden="true">🌐</i> Websites</span>
+            <h3>"My website just sits there."</h3>
+            <div class="bx-vis vis-web" aria-hidden="true">
+              <div class="browser">
+                <div class="b-bar"><i></i><i></i><i></i></div>
+                <div class="b-body">
+                  <span class="b-line w70"></span><span class="b-line w50"></span>
+                  <div class="b-chat">Hi! Need a quote? I can help 👋</div>
+                </div>
+              </div>
+            </div>
+            <p>Add instant answers, lead capture and smarter forms to the site you already have.</p>
+          </article>
+
+          <!-- 5. Internal admin -->
+          <article class="bx bx-admin">
+            <span class="bx-tag"><i aria-hidden="true">🔁</i> Internal admin</span>
+            <h3>"I copy from email into Excel all day."</h3>
+            <div class="bx-vis vis-sync" aria-hidden="true">
+              <span class="app">📧<small>Email</small></span>
+              <span class="pipe"><i></i><i></i><i></i></span>
+              <span class="app">📊<small>Sheet</small></span>
+              <span class="pipe"><i></i><i></i><i></i></span>
+              <span class="app">📅<small>Calendar</small></span>
+            </div>
+            <p>Email, forms, calendars, CRMs, documents. The copy-paste between them, done for you.</p>
+          </article>
+
+          <!-- 6. Your workflow (sticky banner) -->
+          <a class="bx bx-yours" href="#contact">
+            <span class="tape" aria-hidden="true"></span>
+            <span class="yours-txt">
+              <strong>The weird job only your business has.</strong>
+              <span>If it repeats on a computer, we can usually handball part of it.</span>
+            </span>
+            <span class="yours-go">Show us yours &rarr;</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section-wrap industries ind" id="industries">
+        <div class="ind-left">
+          <p class="kicker">Who it helps</p>
+          <h2>Built for businesses with too many <span class="tag-hl">moving parts.</span></h2>
+          <p>Every industry leaks time in different places. Pick yours and see where we'd start.</p>
+          <div class="ind-picks" role="tablist" aria-label="Pick your business">
+            <button type="button" class="ind-pick is-active" role="tab" aria-selected="true" aria-controls="ind-tradie" data-ind="tradie"><span aria-hidden="true">🔧</span>Tradies</button>
+            <button type="button" class="ind-pick" role="tab" aria-selected="false" aria-controls="ind-clinic" data-ind="clinic"><span aria-hidden="true">🩺</span>Clinics</button>
+            <button type="button" class="ind-pick" role="tab" aria-selected="false" aria-controls="ind-cafe" data-ind="cafe"><span aria-hidden="true">☕</span>Cafes</button>
+            <button type="button" class="ind-pick" role="tab" aria-selected="false" aria-controls="ind-gym" data-ind="gym"><span aria-hidden="true">🏋️</span>Gyms</button>
+            <button type="button" class="ind-pick" role="tab" aria-selected="false" aria-controls="ind-realestate" data-ind="realestate"><span aria-hidden="true">🏡</span>Real estate</button>
+            <button type="button" class="ind-pick" role="tab" aria-selected="false" aria-controls="ind-office" data-ind="office"><span aria-hidden="true">⚖️</span>Accounting &amp; law</button>
+          </div>
+          <p class="ind-note">Not on the list? Most businesses leak time in the same places. <a class="text-link" href="#contact">Tell us yours.</a></p>
+        </div>
+
+        <div class="ind-board">
+          <span class="ind-clip" aria-hidden="true"></span>
+            <div class="ind-sheet" id="ind-tradie" role="tabpanel" aria-label="Tradies">
+              <p class="ind-title">Jobs we'd handball for a tradie:</p>
+              <ul>
+                <li style="--i:0"><span class="ind-tick" aria-hidden="true">✓</span><span>Missed calls while you're on the tools</span><span class="ind-top">Biggest time saver</span></li>
+                <li style="--i:1"><span class="ind-tick" aria-hidden="true">✓</span><span>Turning job notes and photos into quotes</span></li>
+                <li style="--i:2"><span class="ind-tick" aria-hidden="true">✓</span><span>Timesheets and job summaries</span></li>
+                <li style="--i:3"><span class="ind-tick" aria-hidden="true">✓</span><span>Following up quotes that went quiet</span></li>
+              </ul>
+            </div>
+            <div class="ind-sheet" id="ind-clinic" role="tabpanel" aria-label="Clinics">
+              <p class="ind-title">Jobs we'd handball for a clinic:</p>
+              <ul>
+                <li style="--i:0"><span class="ind-tick" aria-hidden="true">✓</span><span>New patient intake forms</span><span class="ind-top">Biggest time saver</span></li>
+                <li style="--i:1"><span class="ind-tick" aria-hidden="true">✓</span><span>Appointment reminders and rebooking</span></li>
+                <li style="--i:2"><span class="ind-tick" aria-hidden="true">✓</span><span>The same questions: hours, parking, what to bring</span></li>
+                <li style="--i:3"><span class="ind-tick" aria-hidden="true">✓</span><span>Referral letters and admin handover</span></li>
+              </ul>
+            </div>
+            <div class="ind-sheet" id="ind-cafe" role="tabpanel" aria-label="Cafes">
+              <p class="ind-title">Jobs we'd handball for a cafe:</p>
+              <ul>
+                <li style="--i:0"><span class="ind-tick" aria-hidden="true">✓</span><span>Catering and event enquiries</span><span class="ind-top">Biggest time saver</span></li>
+                <li style="--i:1"><span class="ind-tick" aria-hidden="true">✓</span><span>Supplier orders and stock notes</span></li>
+                <li style="--i:2"><span class="ind-tick" aria-hidden="true">✓</span><span>Roster swaps and shift reminders</span></li>
+                <li style="--i:3"><span class="ind-tick" aria-hidden="true">✓</span><span>Replying to reviews</span></li>
+              </ul>
+            </div>
+            <div class="ind-sheet" id="ind-gym" role="tabpanel" aria-label="Gyms">
+              <p class="ind-title">Jobs we'd handball for a gym:</p>
+              <ul>
+                <li style="--i:0"><span class="ind-tick" aria-hidden="true">✓</span><span>Following up free trials</span><span class="ind-top">Biggest time saver</span></li>
+                <li style="--i:1"><span class="ind-tick" aria-hidden="true">✓</span><span>Class questions and bookings</span></li>
+                <li style="--i:2"><span class="ind-tick" aria-hidden="true">✓</span><span>Membership renewal reminders</span></li>
+                <li style="--i:3"><span class="ind-tick" aria-hidden="true">✓</span><span>Win-back messages for quiet members</span></li>
+              </ul>
+            </div>
+            <div class="ind-sheet" id="ind-realestate" role="tabpanel" aria-label="Real estate">
+              <p class="ind-title">Jobs we'd handball for an agency:</p>
+              <ul>
+                <li style="--i:0"><span class="ind-tick" aria-hidden="true">✓</span><span>Sorting enquiries by property</span><span class="ind-top">Biggest time saver</span></li>
+                <li style="--i:1"><span class="ind-tick" aria-hidden="true">✓</span><span>Inspection follow-ups</span></li>
+                <li style="--i:2"><span class="ind-tick" aria-hidden="true">✓</span><span>Chasing documents from tenants</span></li>
+                <li style="--i:3"><span class="ind-tick" aria-hidden="true">✓</span><span>Answering listing questions</span></li>
+              </ul>
+            </div>
+            <div class="ind-sheet" id="ind-office" role="tabpanel" aria-label="Accounting &amp; law">
+              <p class="ind-title">Jobs we'd handball for a firm:</p>
+              <ul>
+                <li style="--i:0"><span class="ind-tick" aria-hidden="true">✓</span><span>Client intake forms</span><span class="ind-top">Biggest time saver</span></li>
+                <li style="--i:1"><span class="ind-tick" aria-hidden="true">✓</span><span>Chasing missing documents</span></li>
+                <li style="--i:2"><span class="ind-tick" aria-hidden="true">✓</span><span>Drafting routine emails</span></li>
+                <li style="--i:3"><span class="ind-tick" aria-hidden="true">✓</span><span>Filing and naming documents</span></li>
+              </ul>
+            </div>
+        </div>
+      </section>
+
+      <section class="section-wrap process hm" id="process">
+        <div class="hm-head">
+          <p class="kicker">How it works</p>
+          <h2>We find the <span class="tag-hl">handball</span> moment.</h2>
+          <p>In every job there's a moment you think, "why am I still doing this by hand?" That's the handball moment.</p>
+          <span class="scribble">(and pass it back when it matters)</span>
+        </div>
+
+        <div class="hm-track">
+          <svg class="hm-arc" viewBox="0 0 300 120" aria-hidden="true">
+            <path id="hm-path" d="M20 110 C 90 -20, 210 -20, 280 110" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round"/>
+            <circle class="hm-ball-move" r="13">
+              <animateMotion dur="2.6s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.7;1" calcMode="spline" keySplines="0.4 0 0.2 1;0 0 1 1"><mpath href="#hm-path"/></animateMotion>
+            </circle>
+          </svg>
+          <span class="hm-shout" aria-hidden="true">Handball!</span>
+
+          <article class="hm-step">
+            <span class="hm-num">01</span>
+            <span class="hm-who who-you">You've got it</span>
+            <h3>What comes in?</h3>
+            <p>Calls, forms, emails, photos, website questions.</p>
+          </article>
+
+          <article class="hm-step">
+            <span class="hm-num">02</span>
+            <span class="hm-who who-you">You've got it</span>
+            <h3>Where does it get stuck?</h3>
+            <p>Waiting, retyping, copy-paste, forgetting to follow up.</p>
+          </article>
+
+          <article class="hm-step hm-ai">
+            <span class="hm-num">03</span>
+            <span class="hm-who who-ai">AI's got it</span>
+            <h3>What can AI safely start?</h3>
+            <p>Ask the basics, sort, summarise, draft, remind, move data.</p>
+          </article>
+
+          <article class="hm-step hm-back">
+            <span class="hm-num">04</span>
+            <span class="hm-who who-back">Back to you</span>
+            <h3>Where do you decide?</h3>
+            <p>Price, promises, approvals, sending. Always yours.</p>
+          </article>
+        </div>
+
+        <div class="hm-result">
+          <span class="hm-ball-static" aria-hidden="true"></span>
+          <p><span>What you get:</span> one small automation you can test before you trust it.</p>
+          <a class="hm-go" href="#contact">Find my handball moment &rarr;</a>
+        </div>
+      </section>
+
+      <section class="section-wrap example-flow hb" id="example" aria-label="Example: watch your to-do list handball itself">
+        <div class="hb-intro">
+          <p class="kicker">Example</p>
+          <h2>Watch your <span class="nowrap">to-do</span> list <span class="tag-hl">handball</span> itself.</h2>
+          <p>We're not selling software. We take the steps you already do and make most of them happen on their own.</p>
+
+          <p class="hb-hint">Pick a job, then hit the button &rarr;</p>
+          <div class="hb-picks" role="tablist" aria-label="Example jobs">
+            <button class="hb-pick is-active" type="button" role="tab" aria-selected="true" aria-controls="flow-customer" data-flow="customer">New customer</button>
+            <button class="hb-pick" type="button" role="tab" aria-selected="false" aria-controls="flow-quote" data-flow="quote">Quote request</button>
+            <button class="hb-pick" type="button" role="tab" aria-selected="false" aria-controls="flow-invoices" data-flow="invoices">Unpaid invoices</button>
+          </div>
+
+          <div class="hb-action">
+          <button class="button hb-go" type="button" aria-pressed="false">Handball it &rarr;</button>
+
+          <div class="hb-meter" aria-live="polite">
+            <span class="hb-meter-label">Your time</span>
+            <strong><span class="hb-meter-num">25</span> min</strong>
+            <span class="hb-meter-unit">per new customer</span>
+          </div>
+          </div>
+        </div>
+
+        <div class="hb-board">
+          <div class="hb-flow" id="flow-customer" data-before="25" data-after="3" data-unit="per new customer" role="tabpanel" aria-label="New customer">
+            <div class="hb-appbar" aria-hidden="true"><i></i><i></i><i></i><span>Your to-do &middot; New customer</span></div>
+            <ol class="hb-list">
+              <li class="hb-step" style="--i:0">
+                <span class="hb-check" aria-hidden="true"></span>
+                <span class="hb-text">
+                  <span class="hb-before">Read their form or email</span>
+                  <span class="hb-after">Read and sorted for you</span>
+                </span>
+                <span class="hb-mins">3 min</span>
+                <span class="hb-tag">Handballed</span>
+              </li>
+              <li class="hb-step" style="--i:1">
+                <span class="hb-check" aria-hidden="true"></span>
+                <span class="hb-text">
+                  <span class="hb-before">Copy their details into your spreadsheet</span>
+                  <span class="hb-after">Copied across automatically</span>
+                </span>
+                <span class="hb-mins">5 min</span>
+                <span class="hb-tag">Handballed</span>
+              </li>
+              <li class="hb-step" style="--i:2">
+                <span class="hb-check" aria-hidden="true"></span>
+                <span class="hb-text">
+                  <span class="hb-before">Make a folder for their files</span>
+                  <span class="hb-after">Folder made automatically</span>
+                </span>
+                <span class="hb-mins">2 min</span>
+                <span class="hb-tag">Handballed</span>
+              </li>
+              <li class="hb-step" style="--i:3">
+                <span class="hb-check" aria-hidden="true"></span>
+                <span class="hb-text">
+                  <span class="hb-before">Write a welcome email</span>
+                  <span class="hb-after">Drafted, ready to send</span>
+                </span>
+                <span class="hb-mins">6 min</span>
+                <span class="hb-tag">Handballed</span>
+              </li>
+              <li class="hb-step" style="--i:4">
+                <span class="hb-check" aria-hidden="true"></span>
+                <span class="hb-text">
+                  <span class="hb-before">Chase the documents they forgot</span>
+                  <span class="hb-after">Reminders go out on their own</span>
+                </span>
+                <span class="hb-mins">6 min</span>
+                <span class="hb-tag">Handballed</span>
+              </li>
+              <li class="hb-step is-human" style="--i:5">
+                <span class="hb-check" aria-hidden="true"></span>
+                <span class="hb-text">
+                  <span class="hb-before">Check it all looks right</span>
+                  <span class="hb-after">Still you. Quick look, then done.</span>
+                </span>
+                <span class="hb-mins">3 min</span>
+                <span class="hb-tag hb-tag-you">You</span>
+              </li>
+            </ol>
+          </div>
+          <div class="hb-flow" id="flow-quote" data-before="40" data-after="5" data-unit="per quote" role="tabpanel" aria-label="Quote request" hidden>
+            <div class="hb-appbar" aria-hidden="true"><i></i><i></i><i></i><span>Your to-do &middot; Quote request</span></div>
+            <ol class="hb-list">
+              <li class="hb-step" style="--i:0">
+                <span class="hb-check" aria-hidden="true"></span>
+                <span class="hb-text">
+                  <span class="hb-before">Read the request and work out what they want</span>
+                  <span class="hb-after">Summarised in three lines</span>
+                </span>
+                <span class="hb-mins">5 min</span>
+                <span class="hb-tag">Handballed</span>
+              </li>
+              <li class="hb-step" style="--i:1">
+                <span class="hb-check" aria-hidden="true"></span>
+                <span class="hb-text">
+                  <span class="hb-before">Ask them for photos and missing details</span>
+                  <span class="hb-after">Asked automatically</span>
+                </span>
+                <span class="hb-mins">8 min</span>
+                <span class="hb-tag">Handballed</span>
+              </li>
+              <li class="hb-step" style="--i:2">
+                <span class="hb-check" aria-hidden="true"></span>
+                <span class="hb-text">
+                  <span class="hb-before">Dig up prices from a similar past job</span>
+                  <span class="hb-after">Pulled in for you</span>
+                </span>
+                <span class="hb-mins">7 min</span>
+                <span class="hb-tag">Handballed</span>
+              </li>
+              <li class="hb-step" style="--i:3">
+                <span class="hb-check" aria-hidden="true"></span>
+                <span class="hb-text">
+                  <span class="hb-before">Type up the quote</span>
+                  <span class="hb-after">Draft quote ready</span>
+                </span>
+                <span class="hb-mins">10 min</span>
+                <span class="hb-tag">Handballed</span>
+              </li>
+              <li class="hb-step" style="--i:4">
+                <span class="hb-check" aria-hidden="true"></span>
+                <span class="hb-text">
+                  <span class="hb-before">Follow up when they go quiet</span>
+                  <span class="hb-after">Follow-up sent on schedule</span>
+                </span>
+                <span class="hb-mins">5 min</span>
+                <span class="hb-tag">Handballed</span>
+              </li>
+              <li class="hb-step is-human" style="--i:5">
+                <span class="hb-check" aria-hidden="true"></span>
+                <span class="hb-text">
+                  <span class="hb-before">Check the price and hit send</span>
+                  <span class="hb-after">Still you. Your price, your call.</span>
+                </span>
+                <span class="hb-mins">5 min</span>
+                <span class="hb-tag hb-tag-you">You</span>
+              </li>
+            </ol>
+          </div>
+          <div class="hb-flow" id="flow-invoices" data-before="30" data-after="4" data-unit="every week" role="tabpanel" aria-label="Unpaid invoices" hidden>
+            <div class="hb-appbar" aria-hidden="true"><i></i><i></i><i></i><span>Your to-do &middot; Unpaid invoices</span></div>
+            <ol class="hb-list">
+              <li class="hb-step" style="--i:0">
+                <span class="hb-check" aria-hidden="true"></span>
+                <span class="hb-text">
+                  <span class="hb-before">Work out who hasn't paid</span>
+                  <span class="hb-after">Checked every Monday automatically</span>
+                </span>
+                <span class="hb-mins">8 min</span>
+                <span class="hb-tag">Handballed</span>
+              </li>
+              <li class="hb-step" style="--i:1">
+                <span class="hb-check" aria-hidden="true"></span>
+                <span class="hb-text">
+                  <span class="hb-before">Find each invoice</span>
+                  <span class="hb-after">Attached for you</span>
+                </span>
+                <span class="hb-mins">4 min</span>
+                <span class="hb-tag">Handballed</span>
+              </li>
+              <li class="hb-step" style="--i:2">
+                <span class="hb-check" aria-hidden="true"></span>
+                <span class="hb-text">
+                  <span class="hb-before">Write a polite reminder</span>
+                  <span class="hb-after">Written and sent</span>
+                </span>
+                <span class="hb-mins">8 min</span>
+                <span class="hb-tag">Handballed</span>
+              </li>
+              <li class="hb-step" style="--i:3">
+                <span class="hb-check" aria-hidden="true"></span>
+                <span class="hb-text">
+                  <span class="hb-before">Send a second nudge a week later</span>
+                  <span class="hb-after">Sent on schedule</span>
+                </span>
+                <span class="hb-mins">6 min</span>
+                <span class="hb-tag">Handballed</span>
+              </li>
+              <li class="hb-step is-human" style="--i:4">
+                <span class="hb-check" aria-hidden="true"></span>
+                <span class="hb-text">
+                  <span class="hb-before">Decide what to do about the really late ones</span>
+                  <span class="hb-after">Still you. Your customers, your call.</span>
+                </span>
+                <span class="hb-mins">4 min</span>
+                <span class="hb-tag hb-tag-you">You</span>
+              </li>
+            </ol>
+          </div>
+          <p class="hb-note">Example only. Your steps and times will be different.</p>
+        </div>
+
+        <div class="hb-outro wf">
+          <p class="hb-outro-title">Your workflow looks different? <span>Good. That's the one we automate.</span></p>
+          <div class="wf-belt">
+            <ul class="wf-track">
+              <li class="wf-card">
+                <span class="wf-top"><span class="wf-emoji" aria-hidden="true">🩺</span>Physio</span>
+                <strong>New patient forms</strong>
+                <span class="wf-stamp">✓ Handballed</span>
+              </li>
+              <li class="wf-card">
+                <span class="wf-top"><span class="wf-emoji" aria-hidden="true">📊</span>Accountant</span>
+                <strong>Chasing client documents</strong>
+                <span class="wf-stamp">✓ Handballed</span>
+              </li>
+              <li class="wf-card">
+                <span class="wf-top"><span class="wf-emoji" aria-hidden="true">🏋️</span>Gym</span>
+                <strong>Following up free trials</strong>
+                <span class="wf-stamp">✓ Handballed</span>
+              </li>
+              <li class="wf-card">
+                <span class="wf-top"><span class="wf-emoji" aria-hidden="true">☕</span>Cafe</span>
+                <strong>Catering orders</strong>
+                <span class="wf-stamp">✓ Handballed</span>
+              </li>
+              <li class="wf-card">
+                <span class="wf-top"><span class="wf-emoji" aria-hidden="true">🏡</span>Real estate</span>
+                <strong>Inspection follow-ups</strong>
+                <span class="wf-stamp">✓ Handballed</span>
+              </li>
+              <li class="wf-card">
+                <span class="wf-top"><span class="wf-emoji" aria-hidden="true">🔧</span>Tradie</span>
+                <strong>Job photos to invoice</strong>
+                <span class="wf-stamp">✓ Handballed</span>
+              </li>
+              <li class="wf-card">
+                <span class="wf-top"><span class="wf-emoji" aria-hidden="true">✂️</span>Salon</span>
+                <strong>Booking confirmations</strong>
+                <span class="wf-stamp">✓ Handballed</span>
+              </li>
+              <li class="wf-card">
+                <span class="wf-top"><span class="wf-emoji" aria-hidden="true">⚖️</span>Law firm</span>
+                <strong>Client intake forms</strong>
+                <span class="wf-stamp">✓ Handballed</span>
+              </li>
+              <li class="wf-card" aria-hidden="true">
+                <span class="wf-top"><span class="wf-emoji" aria-hidden="true">🩺</span>Physio</span>
+                <strong>New patient forms</strong>
+                <span class="wf-stamp">✓ Handballed</span>
+              </li>
+              <li class="wf-card" aria-hidden="true">
+                <span class="wf-top"><span class="wf-emoji" aria-hidden="true">📊</span>Accountant</span>
+                <strong>Chasing client documents</strong>
+                <span class="wf-stamp">✓ Handballed</span>
+              </li>
+              <li class="wf-card" aria-hidden="true">
+                <span class="wf-top"><span class="wf-emoji" aria-hidden="true">🏋️</span>Gym</span>
+                <strong>Following up free trials</strong>
+                <span class="wf-stamp">✓ Handballed</span>
+              </li>
+              <li class="wf-card" aria-hidden="true">
+                <span class="wf-top"><span class="wf-emoji" aria-hidden="true">☕</span>Cafe</span>
+                <strong>Catering orders</strong>
+                <span class="wf-stamp">✓ Handballed</span>
+              </li>
+              <li class="wf-card" aria-hidden="true">
+                <span class="wf-top"><span class="wf-emoji" aria-hidden="true">🏡</span>Real estate</span>
+                <strong>Inspection follow-ups</strong>
+                <span class="wf-stamp">✓ Handballed</span>
+              </li>
+              <li class="wf-card" aria-hidden="true">
+                <span class="wf-top"><span class="wf-emoji" aria-hidden="true">🔧</span>Tradie</span>
+                <strong>Job photos to invoice</strong>
+                <span class="wf-stamp">✓ Handballed</span>
+              </li>
+              <li class="wf-card" aria-hidden="true">
+                <span class="wf-top"><span class="wf-emoji" aria-hidden="true">✂️</span>Salon</span>
+                <strong>Booking confirmations</strong>
+                <span class="wf-stamp">✓ Handballed</span>
+              </li>
+              <li class="wf-card" aria-hidden="true">
+                <span class="wf-top"><span class="wf-emoji" aria-hidden="true">⚖️</span>Law firm</span>
+                <strong>Client intake forms</strong>
+                <span class="wf-stamp">✓ Handballed</span>
+              </li>
+            </ul>
+          </div>
+          <a class="wf-yours" href="mailto:hello@handballai.com.au?subject=Here%27s%20my%20workflow&body=Hi%2C%0A%0AHere%27s%20a%20job%20I%27d%20like%20to%20handball%3A%0A%0AHow%20I%20do%20it%20now%3A%0A">
+            <span class="wf-plus" aria-hidden="true">+</span>
+            <span><strong>Your job goes here.</strong> Tell us the one that eats your week. We'll map it with you.</span>
+            <span class="wf-go" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="faq yb" id="faq">
+        <div class="section-wrap yb-layout">
+          <div class="yb-side">
+            <p class="kicker">Fair questions</p>
+            <h2>Yeah, <span>but&hellip;</span></h2>
+            <p>The stuff people wonder before they message us. Straight answers.</p>
+            <a class="button button-primary" href="mailto:hello@handballai.com.au?subject=I%20have%20a%20yeah-but">Still got a yeah-but? Ask us</a>
+          </div>
+
+          <div class="yb-phone">
+            <div class="yb-head">
+              <span class="yb-avatar" aria-hidden="true">H</span>
+              <span>
+                <strong>Handball AI</strong>
+                <small>Real people. Straight answers.</small>
+              </span>
+            </div>
+            <div class="yb-chat">
+              <p class="yb-day">Today</p>
+              <div class="yb-item">
+                <div class="yb-q-row">
+                  <span class="yb-bubble yb-ask"><strong>Yeah, but</strong> I'm not techy.<span class="yb-meta">✓✓</span></span>
+                </div>
+                <div class="yb-reply">
+                  <span class="yb-avatar" aria-hidden="true">H</span>
+                  <span class="yb-bubble yb-answer">
+                    <span class="yb-text">You don't need to be. You just show us how you do the job today, even over a phone call. We do all the setup and show you how to use it.</span>
+                  </span>
+                </div>
+              </div>
+              <div class="yb-item">
+                <div class="yb-q-row">
+                  <span class="yb-bubble yb-ask"><strong>Yeah, but</strong> I don't want AI annoying my customers.<span class="yb-meta">✓✓</span></span>
+                </div>
+                <div class="yb-reply">
+                  <span class="yb-avatar" aria-hidden="true">H</span>
+                  <span class="yb-bubble yb-answer">
+                    <span class="yb-text">Then it won't talk to them. Lots of automations work behind the scenes: filling spreadsheets, sorting emails, drafting quotes. If it does reply to customers, you approve the wording first.</span>
+                  </span>
+                </div>
+              </div>
+              <div class="yb-item">
+                <div class="yb-q-row">
+                  <span class="yb-bubble yb-ask"><strong>Yeah, but</strong> what if it gets something wrong?<span class="yb-meta">✓✓</span></span>
+                </div>
+                <div class="yb-reply">
+                  <span class="yb-avatar" aria-hidden="true">H</span>
+                  <span class="yb-bubble yb-answer">
+                    <span class="yb-text">You test it before you rely on it. Anything about money, bookings or promises waits for your OK. If something breaks, message us and we fix it.</span>
+                  </span>
+                </div>
+              </div>
+              <div class="yb-item">
+                <div class="yb-q-row">
+                  <span class="yb-bubble yb-ask"><strong>Yeah, but</strong> I don't know what to automate.<span class="yb-meta">✓✓</span></span>
+                </div>
+                <div class="yb-reply">
+                  <span class="yb-avatar" aria-hidden="true">H</span>
+                  <span class="yb-bubble yb-answer">
+                    <span class="yb-text">Most people don't. Think of a job you do every week where you copy, paste, chase or retype the same stuff. That's usually it. We'll find it together in the free chat.</span>
+                  </span>
+                </div>
+              </div>
+              <div class="yb-item">
+                <div class="yb-q-row">
+                  <span class="yb-bubble yb-ask"><strong>Yeah, but</strong> our tools are a mess.<span class="yb-meta">✓✓</span></span>
+                </div>
+                <div class="yb-reply">
+                  <span class="yb-avatar" aria-hidden="true">H</span>
+                  <span class="yb-bubble yb-answer">
+                    <span class="yb-text">Normal. Gmail, Excel, paper forms, an old booking system. Whatever you use, we work with it. You don't need to change anything first.</span>
+                  </span>
+                </div>
+              </div>
+              <div class="yb-item">
+                <div class="yb-q-row">
+                  <span class="yb-bubble yb-ask"><strong>Yeah, but</strong> will it replace my staff?<span class="yb-meta">✓✓</span></span>
+                </div>
+                <div class="yb-reply">
+                  <span class="yb-avatar" aria-hidden="true">H</span>
+                  <span class="yb-bubble yb-answer">
+                    <span class="yb-text">No. It takes the boring bits off their plate, like data entry, reminders and first drafts, so they get more time for customers.</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta hbx" id="contact">
+        <div class="hbx-notes" aria-hidden="true">
+          <span class="hbx-note n1">Chase unpaid invoices</span>
+          <span class="hbx-note n2">Copy form into Excel</span>
+          <span class="hbx-note n3">Reply to Tuesday's enquiry</span>
+          <span class="hbx-note n4">Type up that quote</span>
+          <span class="hbx-note n5">Remind client about docs</span>
+          <span class="hbx-note n6">Update the spreadsheet</span>
+          <svg class="hbx-arc" viewBox="0 0 400 160" preserveAspectRatio="none"><path d="M10 150 C 120 -30, 280 -30, 390 150" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round"/></svg>
+        </div>
+
+        <div class="section-wrap hbx-inner">
+          <h2>What's the one job you'd <span>handball</span> today?</h2>
+          <p>Pick it, send it. We'll tell you what AI can take off your plate, and what should stay with you.</p>
+
+          <div class="hbx-jobs" role="group" aria-label="Pick a job">
+            <button type="button" class="hbx-job" aria-pressed="false" data-job="customer enquiries">Customer enquiries</button>
+            <button type="button" class="hbx-job" aria-pressed="false" data-job="quotes">Quotes</button>
+            <button type="button" class="hbx-job" aria-pressed="false" data-job="chasing invoices">Chasing invoices</button>
+            <button type="button" class="hbx-job" aria-pressed="false" data-job="copying data between apps">Copying data between apps</button>
+            <button type="button" class="hbx-job" aria-pressed="false" data-job="forms and paperwork">Forms and paperwork</button>
+            <button type="button" class="hbx-job" aria-pressed="false" data-job="something else">Something else</button>
+          </div>
+
+          <div class="cta-actions">
+            <a class="button hbx-email" href="mailto:hello@handballai.com.au?subject=Handball%20AI%20enquiry">Email us</a>
+            <!-- TODO: replace 61XXXXXXXXX with Mark's mobile (country code 61, no leading 0, no spaces) -->
+            <a class="button hbx-wa" href="https://wa.me/61XXXXXXXXX?text=G%27day%20Mark%2C%20I%27ve%20got%20a%20job%20I%27d%20like%20to%20handball." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.4-.3Z"/></svg> Text Mark</a>
+          </div>
+          <p class="hbx-picked" aria-live="polite"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer ft">
+      <div class="section-wrap ft-top">
+        <div class="ft-say">
+          <p class="ft-hand">Say g'day, or handball us a message.</p>
+          <p class="ft-small">AI automation for Aussie small businesses. We take the boring steps off your plate, you keep the calls that matter.</p>
+        </div>
+
+        <div class="ft-col">
+          <p class="ft-label">Get in touch</p>
+          <div class="ft-mail">
+            <a href="mailto:hello@handballai.com.au">hello@handballai.com.au</a>
+            <button type="button" class="ft-copy" data-copy="hello@handballai.com.au">Copy</button>
+          </div>
+          <!-- TODO: replace 61XXXXXXXXX with Mark's mobile -->
+          <a class="ft-wa" href="https://wa.me/61XXXXXXXXX?text=G%27day%20Mark%2C%20I%27ve%20got%20a%20job%20I%27d%20like%20to%20handball." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.4-.3Z"/></svg> Text Mark on WhatsApp</a>
+        </div>
+
+        <nav class="ft-col" aria-label="Footer">
+          <p class="ft-label">On this page</p>
+          <a href="#services">Workflows</a>
+          <a href="#industries">Who it helps</a>
+          <a href="#process">How it works</a>
+          <a href="#example">Example</a>
+          <a href="#faq">Questions</a>
+        </nav>
+      </div>
+
+      <div class="ft-word" aria-hidden="true">Handball<span class="ft-ball"></span>AI</div>
+
+      <div class="section-wrap ft-bottom">
+        <span>&copy; 2026 Handball AI &middot; Based in Australia</span>
+        <a class="ft-up" href="#top">Back to top <span aria-hidden="true">&uarr;</span></a>
       </div>
     </footer>
 
-    <script src="assets/js/main.js"></script>
+
+    <script>
+      document.documentElement.classList.add("js");
+      (function () {
+        var root = document.querySelector(".hb");
+        if (!root) return;
+        var go = root.querySelector(".hb-go");
+        var num = root.querySelector(".hb-meter-num");
+        var unit = root.querySelector(".hb-meter-unit");
+        var picks = root.querySelectorAll(".hb-pick");
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var timer = null;
+
+        function active() { return root.querySelector(".hb-flow:not([hidden])"); }
+
+        function countTo(target) {
+          clearInterval(timer);
+          var cur = parseInt(num.textContent, 10);
+          if (reduce || cur === target) { num.textContent = target; return; }
+          var step = cur > target ? -1 : 1;
+          timer = setInterval(function () {
+            cur += step;
+            num.textContent = cur;
+            if (cur === target) clearInterval(timer);
+          }, 45);
+        }
+
+        function setDone(done) {
+          var flow = active();
+          root.classList.toggle("is-handballed", done);
+          go.setAttribute("aria-pressed", done ? "true" : "false");
+          go.innerHTML = done ? "&larr; Show me before" : "Handball it &rarr;";
+          countTo(parseInt(done ? flow.dataset.after : flow.dataset.before, 10));
+        }
+
+        go.addEventListener("click", function () {
+          setDone(!root.classList.contains("is-handballed"));
+        });
+
+        picks.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            picks.forEach(function (b) {
+              b.classList.toggle("is-active", b === btn);
+              b.setAttribute("aria-selected", b === btn ? "true" : "false");
+            });
+            root.querySelectorAll(".hb-flow").forEach(function (f) {
+              f.hidden = f.id !== "flow-" + btn.dataset.flow;
+            });
+            var flow = active();
+            unit.textContent = flow.dataset.unit;
+            root.classList.remove("is-handballed");
+            go.setAttribute("aria-pressed", "false");
+            go.innerHTML = "Handball it &rarr;";
+            clearInterval(timer);
+            num.textContent = flow.dataset.before;
+          });
+        });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        var box = document.querySelector(".hbx");
+        if (!box) return;
+        var email = box.querySelector(".hbx-email");
+        var wa = box.querySelector(".hbx-wa");
+        var picked = box.querySelector(".hbx-picked");
+        var waBase = wa.href.split("?")[0];
+        var jobs = box.querySelectorAll(".hbx-job");
+        jobs.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var on = btn.getAttribute("aria-pressed") !== "true";
+            jobs.forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+            var job = on ? btn.dataset.job : "";
+            if (on) btn.setAttribute("aria-pressed", "true");
+            var line = job ? "I'd like to handball " + job + "." : "I've got a job I'd like to handball.";
+            email.href = "mailto:hello@handballai.com.au?subject=" + encodeURIComponent(job ? "Handball: " + job : "Handball AI enquiry") +
+              "&body=" + encodeURIComponent("Hi,\n\n" + line + "\n\nHere's how I do it now:\n");
+            wa.href = waBase + "?text=" + encodeURIComponent("G'day Mark, " + line);
+            picked.textContent = job ? "Nice. We'll add \"" + job + "\" to your message." : "";
+          });
+        });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        var header = document.querySelector(".site-header");
+        var hero = document.querySelector(".hero");
+        var links = document.querySelectorAll(".site-nav a");
+        function onScroll() {
+          var past = hero.getBoundingClientRect().bottom < 90;
+          header.dataset.theme = past ? "light" : "dark";
+          header.classList.toggle("is-scrolled", window.scrollY > 10);
+        }
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+        if ("IntersectionObserver" in window) {
+          var map = {};
+          links.forEach(function (a) { map[a.getAttribute("href").slice(1)] = a; });
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting && map[e.target.id]) {
+                links.forEach(function (a) { a.classList.remove("is-active"); });
+                map[e.target.id].classList.add("is-active");
+              }
+            });
+          }, { rootMargin: "-45% 0px -50% 0px" });
+          Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+        }
+
+        var run = document.querySelector(".run");
+        if (!run) return;
+        var steps = run.querySelectorAll(".run-step");
+        var bar = run.querySelector(".run-bar span");
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          steps.forEach(function (s) { s.classList.add("is-done"); });
+          bar.style.width = "100%";
+          return;
+        }
+        var i = 0;
+        function tick() {
+          if (i < steps.length) {
+            steps[i].classList.add("is-done");
+            i++;
+            bar.style.width = (i / steps.length * 100) + "%";
+            setTimeout(tick, i === steps.length ? 3200 : 1100);
+          } else {
+            steps.forEach(function (s) { s.classList.remove("is-done"); });
+            bar.style.width = "0%";
+            i = 0;
+            setTimeout(tick, 700);
+          }
+        }
+        setTimeout(tick, 600);
+      })();
+    </script>
+
+    <script>
+      (function () {
+        var sec = document.querySelector(".ind");
+        if (!sec) return;
+        var picks = sec.querySelectorAll(".ind-pick");
+        var sheets = sec.querySelectorAll(".ind-sheet");
+        function show(key) {
+          picks.forEach(function (b) {
+            var on = b.dataset.ind === key;
+            b.classList.toggle("is-active", on);
+            b.setAttribute("aria-selected", on ? "true" : "false");
+          });
+          sheets.forEach(function (s) { s.hidden = s.id !== "ind-" + key; });
+        }
+        picks.forEach(function (b) { b.addEventListener("click", function () { show(b.dataset.ind); }); });
+        show(picks[0].dataset.ind);
+      })();
+    </script>
+
+    <script>
+      document.querySelectorAll(".ft-copy").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var text = btn.dataset.copy;
+          function done() { btn.textContent = "Copied ✓"; btn.classList.add("is-done"); setTimeout(function () { btn.textContent = "Copy"; btn.classList.remove("is-done"); }, 1800); }
+          if (navigator.clipboard) { navigator.clipboard.writeText(text).then(done, function () {}); }
+        });
+      });
+    </script>
   </body>
 </html>

@@ -6,3 +6,7 @@ Static landing page for Handball AI, an AI automation service for Australian sma
 
 The deployable site lives in `site/`.
 
+
+## Designs
+
+Design docs from grill-me sessions live in `docs/designs/`.
