@@ -8,7 +8,7 @@
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="preload" href="assets/fonts/bricolage-grotesque-3.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/inter-7.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="assets/css/styles.css?v=20261020-voice">
+    <link rel="stylesheet" href="assets/css/styles.css?v=20261019-faq">
   </head>
   <body>
     <header class="site-header" data-theme="dark">
@@ -37,7 +37,6 @@
             <p class="eyebrow"><span></span> Websites and AI automation for Aussie businesses</p>
             <h1>Show us your workflow. We'll automate the boring bits.</h1>
             <p class="hero-copy">Business websites built for you. Practical AI automation for calls, forms, follow-ups, paperwork, and the repeat jobs that waste your week.</p>
-            <button class="voice-open" type="button" aria-haspopup="dialog" aria-controls="voice-dialog">Leave us a message <span aria-hidden="true">&rarr;</span></button>
             <a class="hero-scroll" href="#example">See it in action <span aria-hidden="true">&darr;</span></a>
           </div>
 
@@ -882,44 +881,6 @@
         }
         picks.forEach(function (b) { b.addEventListener("click", function () { show(b.dataset.ind); }); });
         show(picks[0].dataset.ind);
-      })();
-    </script>
-
-    <dialog class="voice-dialog" id="voice-dialog" aria-labelledby="voice-title" aria-describedby="voice-help">
-      <div class="voice-heading">
-        <h2 id="voice-title">Leave us a message</h2>
-        <button class="voice-close" type="button" autofocus aria-label="Close voice message">Close &times;</button>
-      </div>
-      <p id="voice-help">Have a chat with our AI assistant. Your browser will ask to use your mic when you start. Closing this window ends the chat.</p>
-      <div class="voice-frame"></div>
-      <p class="voice-fallback">Trouble connecting? <a href="https://staging.handballai.tech" target="_blank" rel="noopener noreferrer">Open the voice assistant in a new tab</a> or <a href="https://wa.me/61404557261" target="_blank" rel="noopener noreferrer">text Mark</a>.</p>
-    </dialog>
-
-    <script>
-      (function () {
-        var button = document.querySelector(".voice-open");
-        var dialog = document.getElementById("voice-dialog");
-        var container = dialog.querySelector(".voice-frame");
-        button.addEventListener("click", function () {
-          // Staging for review and dogfooding before a production rollout.
-          var frame = document.createElement("iframe");
-          frame.src = "https://staging.handballai.tech";
-          frame.title = "Handball AI voice assistant";
-          frame.allow = "microphone https://staging.handballai.tech; autoplay https://staging.handballai.tech";
-          dialog.showModal();
-          document.documentElement.classList.add("voice-is-open");
-          container.appendChild(frame);
-        });
-        dialog.querySelector(".voice-close").addEventListener("click", function () { dialog.close(); });
-        dialog.addEventListener("click", function (event) {
-          var bounds = dialog.getBoundingClientRect();
-          if (event.target === dialog && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) dialog.close();
-        });
-        dialog.addEventListener("close", function () {
-          container.replaceChildren();
-          document.documentElement.classList.remove("voice-is-open");
-          button.focus({ preventScroll: true });
-        });
       })();
     </script>
 
