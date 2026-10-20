@@ -892,7 +892,7 @@
       </div>
       <p id="voice-help">Have a chat with our AI assistant. Your browser will ask to use your mic when you start. Closing this window ends the chat.</p>
       <div class="voice-frame"></div>
-      <p class="voice-fallback">Trouble connecting? <a href="https://staging.handballai.tech" target="_blank" rel="noopener noreferrer">Open the voice assistant in a new tab</a> or <a href="https://wa.me/61404557261" target="_blank" rel="noopener noreferrer">text Mark</a>.</p>
+      <p class="voice-fallback">Trouble connecting? <a href="https://voice.handballai.tech" target="_blank" rel="noopener noreferrer">Open the voice assistant in a new tab</a> or <a href="https://wa.me/61404557261" target="_blank" rel="noopener noreferrer">text Mark</a>.</p>
     </dialog>
 
     <script>
@@ -901,11 +901,11 @@
         var dialog = document.getElementById("voice-dialog");
         var container = dialog.querySelector(".voice-frame");
         button.addEventListener("click", function () {
-          // Staging for review and dogfooding before a production rollout.
+          // The staging homepage uses the existing voice backend.
           var frame = document.createElement("iframe");
-          frame.src = "https://staging.handballai.tech";
+          frame.src = "https://voice.handballai.tech";
           frame.title = "Handball AI voice assistant";
-          frame.allow = "microphone https://staging.handballai.tech; autoplay https://staging.handballai.tech";
+          frame.allow = "microphone https://voice.handballai.tech; autoplay https://voice.handballai.tech";
           dialog.showModal();
           document.documentElement.classList.add("voice-is-open");
           container.appendChild(frame);

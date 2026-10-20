@@ -1,0 +1,15 @@
+{
+  "name": "handball-ai-site-staging",
+  "compatibility_date": "2025-01-01",
+  "workers_dev": false,
+  "preview_urls": false,
+  "assets": {
+    "directory": "./site"
+  },
+  "routes": [
+    {
+      "pattern": "staging.handballai.tech",
+      "custom_domain": true
+    }
+  ]
+}
