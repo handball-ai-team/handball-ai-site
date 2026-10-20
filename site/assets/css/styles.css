@@ -4156,7 +4156,7 @@ h3 { font-weight: 700; }
   .hero-layout { grid-template-columns: 1fr; }
   .hero-map { max-width: 520px; }
 }
-/* Voice message: local Step 1 embed */
+/* Voice message: staging review embed */
 .voice-open {
   display: block;
   margin-top: 28px;
@@ -4179,21 +4179,23 @@ html.voice-is-open { overflow: hidden; }
   max-height: none;
   margin: auto;
   padding: 20px;
-  border: 1px solid var(--line);
+  border: 1px solid #f5c45140;
   border-radius: 18px;
-  background: var(--paper);
-  color: var(--ink);
-  box-shadow: var(--shadow);
+  background: #0b1020;
+  color: #f7f9ff;
+  box-shadow: 0 24px 100px #03061180;
 }
 .voice-dialog[open] { display: flex; flex-direction: column; gap: 12px; }
 .voice-dialog::backdrop { background: rgba(17, 17, 47, .75); }
 .voice-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .voice-heading h2 { margin: 0; font-family: var(--display); font-size: clamp(22px, 4vw, 30px); }
-.voice-close { flex-shrink: 0; min-height: 44px; padding: 8px 12px; border: 1px solid var(--ink); border-radius: 8px; background: var(--paper); color: var(--ink); font: inherit; cursor: pointer; }
-.voice-dialog p { margin: 0; font-size: 14px; line-height: 1.5; }
+.voice-close { flex-shrink: 0; min-height: 44px; padding: 8px 12px; border: 1px solid #f5c45166; border-radius: 8px; background: #141b33; color: #ffd873; font: inherit; cursor: pointer; }
+.voice-close:hover { background: #242a3c; }
+.voice-close:focus-visible { outline-color: #ffd873; }
+.voice-dialog p { margin: 0; color: #aeb7d6; font-size: 14px; line-height: 1.5; }
 .voice-frame { flex: 1; min-height: 180px; }
-.voice-frame iframe { display: block; width: 100%; height: 100%; border: 1px solid var(--line); border-radius: 10px; background: white; }
-.voice-fallback a { text-decoration: underline; }
+.voice-frame iframe { display: block; width: 100%; height: 100%; border: 1px solid #aeb7d622; border-radius: 10px; background: #0b1020; }
+.voice-fallback a { color: #ffd873; text-decoration: underline; }
 @media (max-width: 540px) {
   .voice-dialog { padding: 12px; gap: 10px; }
   .voice-dialog[open] { gap: 10px; }

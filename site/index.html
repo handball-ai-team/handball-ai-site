@@ -8,7 +8,7 @@
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="preload" href="assets/fonts/bricolage-grotesque-3.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/inter-7.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="assets/css/styles.css?v=20261020-voice">
+    <link rel="stylesheet" href="assets/css/styles.css?v=20261020-voice-gold">
   </head>
   <body>
     <header class="site-header" data-theme="dark">
@@ -892,7 +892,7 @@
       </div>
       <p id="voice-help">Have a chat with our AI assistant. Your browser will ask to use your mic when you start. Closing this window ends the chat.</p>
       <div class="voice-frame"></div>
-      <p class="voice-fallback">Trouble connecting? <a href="https://voice.handballai.tech" target="_blank" rel="noopener noreferrer">Open the voice assistant in a new tab</a> or <a href="https://wa.me/61404557261" target="_blank" rel="noopener noreferrer">text Mark</a>.</p>
+      <p class="voice-fallback">Trouble connecting? <a href="https://voice-ai-receptionist-staging.handballai-au.workers.dev" target="_blank" rel="noopener noreferrer">Open the voice assistant in a new tab</a> or <a href="https://wa.me/61404557261" target="_blank" rel="noopener noreferrer">text Mark</a>.</p>
     </dialog>
 
     <script>
@@ -901,11 +901,11 @@
         var dialog = document.getElementById("voice-dialog");
         var container = dialog.querySelector(".voice-frame");
         button.addEventListener("click", function () {
-          // The staging homepage uses the existing voice backend.
+          // Only the staging homepage reviews this isolated voice UI.
           var frame = document.createElement("iframe");
-          frame.src = "https://voice.handballai.tech";
+          frame.src = "https://voice-ai-receptionist-staging.handballai-au.workers.dev";
           frame.title = "Handball AI voice assistant";
-          frame.allow = "microphone https://voice.handballai.tech; autoplay https://voice.handballai.tech";
+          frame.allow = "microphone https://voice-ai-receptionist-staging.handballai-au.workers.dev; autoplay https://voice-ai-receptionist-staging.handballai-au.workers.dev";
           dialog.showModal();
           document.documentElement.classList.add("voice-is-open");
           container.appendChild(frame);
