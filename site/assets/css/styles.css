@@ -4200,3 +4200,97 @@ html.voice-is-open { overflow: hidden; }
   .voice-dialog { padding: 12px; gap: 10px; }
   .voice-dialog[open] { gap: 10px; }
 }
+
+/* Hero voice CTA: "Talk to Elsa" + handwritten note (writes itself in, arrow nudges). */
+.voice-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  margin-top: 28px;
+}
+.voice-cta .voice-open { margin-top: 0; }
+.voice-open-arrow {
+  display: inline-block;
+  animation: voice-arrow-nudge 3.2s ease-in-out 2.4s infinite;
+}
+.voice-cta-note {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 4px;
+  margin: 0;
+  color: var(--yellow);
+  font-family: var(--hand);
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 1.1;
+  transform: rotate(-3deg);
+}
+.voice-cta-curl {
+  flex: none;
+  width: 40px;
+  height: 28px;
+  margin-bottom: 8px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 70;
+  animation: voice-curl-draw .5s ease-out 1.7s both;
+}
+.voice-cta-text {
+  display: inline-block;
+  padding-right: 4px;
+  animation: voice-write-in 1.2s steps(18, end) .5s both;
+}
+@keyframes voice-write-in {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 -12px 0 0); }
+}
+@keyframes voice-curl-draw {
+  from { stroke-dashoffset: 70; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes voice-arrow-nudge {
+  0%, 70%, 100% { transform: translateX(0); }
+  80% { transform: translateX(6px); }
+  90% { transform: translateX(1px); }
+}
+@media (max-width: 560px) {
+  .voice-cta { flex-direction: column; align-items: flex-start; }
+  .voice-cta-note { margin-left: 18px; align-items: flex-start; font-size: 23px; }
+  .voice-cta-curl { order: -1; margin: 0; transform: rotate(80deg) scaleY(-1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .voice-open-arrow, .voice-cta-curl, .voice-cta-text { animation: none; }
+}
+
+/* Hero pill: dark glass to sit on the photo background. Final CTA pill unchanged. */
+.hero .eyebrow {
+  padding: 8px 14px;
+  color: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(17, 17, 47, 0.45);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+.hero .eyebrow span {
+  background: var(--brand);
+  box-shadow: 0 0 0 3px rgba(20, 184, 111, 0.22), 0 0 10px rgba(20, 184, 111, 0.55);
+}
+@media (max-width: 560px) {
+  .hero .eyebrow { gap: 7px; padding: 7px 11px; font-size: 12px; white-space: nowrap; }
+}
+@media (max-width: 380px) {
+  .hero .eyebrow { font-size: 11px; letter-spacing: 0; }
+}
+/* Nav CTA "Handball us a job" stays on one line on small phones. */
+.nav-cta { white-space: nowrap; }
+@media (max-width: 380px) {
+  .nav-cta { padding-left: 12px; padding-right: 12px; font-size: 13px; gap: 6px; }
+}

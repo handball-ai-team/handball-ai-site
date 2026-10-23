@@ -42,3 +42,28 @@ Not touched: call logic, audio, Elsa's voice/model/script, enquiry/email backend
   Watch for it in staging testing.
 - Footer privacy line must change if call recording is ever added.
 - Possible later copy tweak: transcript label "Handball AI" vs "Elsa" (not changed).
+
+### Round 3 (23 Oct): hero button
+10. Hero button "Leave us a message →" becomes **"Talk to Elsa →"**, with a handwritten
+    note beside it (Caveat, yellow, slight tilt): "our AI receptionist. Give her a go!"
+    and a small curled arrow pointing at the button. On phones the note sits under the button.
+11. Animation: the note writes itself in once on load (left to right), the curl draws
+    in last; the → in the button nudges right every few seconds. All animation is off
+    under prefers-reduced-motion. The button's accessible description is the note.
+
+### Round 4 (23 Oct): hero pill
+12. Keep the text "Websites and AI automation for Aussie businesses" (Jimmy's choice after
+    trying a dictionary-style line). Restyle the hero pill only: dark see-through glass,
+    thin light border, white text, glowing green dot. One line on phones (smaller text,
+    no wrap). The final CTA section's pill is unchanged.
+
+### Round 5 (23 Oct): nav button
+13. Nav button "Let's talk →" becomes **"Handball us a job →"** (still links to #contact,
+    the job picker). Separates it from the hero "Talk to Elsa" voice call. Kept on one line
+    on small phones (nowrap; tighter padding/font under 380px).
+
+### Round 6 (23 Oct): public email
+14. Public site email changes from handballai.au@gmail.com to **hello@handballai.tech**,
+    a Zoho group (distribution list) with jimmy@ and mark@ as members, "Everyone" can send.
+    All mailto links, the footer address/Copy button and the job-picker email updated.
+    Keeps both personal addresses off the public site (AI_HANDOFF: no Jimmy personal details).
