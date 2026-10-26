@@ -898,7 +898,7 @@
       </div>
       <p id="voice-help">Mic on, talk like you would on the phone. Close this window any time to hang up.</p>
       <div class="voice-frame"></div>
-      <p class="voice-fallback">Trouble connecting? <a href="https://voice-ai-receptionist-staging.handballai-au.workers.dev" target="_blank" rel="noopener noreferrer">Open the voice assistant in a new tab</a> or <a href="https://wa.me/61404557261" target="_blank" rel="noopener noreferrer">text Mark</a>.</p>
+      <p class="voice-fallback">Trouble connecting? <a class="voice-newtab" href="https://voice.handballai.tech/" target="_blank" rel="noopener noreferrer">Open the voice assistant in a new tab</a> or <a href="https://wa.me/61404557261" target="_blank" rel="noopener noreferrer">text Mark</a>.</p>
     </dialog>
 
     <script>
@@ -906,12 +906,15 @@
         var button = document.querySelector(".voice-open");
         var dialog = document.getElementById("voice-dialog");
         var container = dialog.querySelector(".voice-frame");
+        // Real site talks to real Elsa. Any other host (staging, local preview) uses the isolated staging Elsa.
+        var live = location.hostname === "handballai.tech" || location.hostname === "www.handballai.tech";
+        var voiceOrigin = live ? "https://voice.handballai.tech" : "https://voice-ai-receptionist-staging.handballai-au.workers.dev";
+        dialog.querySelector(".voice-newtab").href = voiceOrigin + "/";
         button.addEventListener("click", function () {
-          // Only the staging homepage reviews this isolated voice UI.
           var frame = document.createElement("iframe");
-          frame.src = "https://voice-ai-receptionist-staging.handballai-au.workers.dev";
+          frame.src = voiceOrigin + "/";
           frame.title = "Handball AI voice assistant";
-          frame.allow = "microphone https://voice-ai-receptionist-staging.handballai-au.workers.dev; autoplay https://voice-ai-receptionist-staging.handballai-au.workers.dev";
+          frame.allow = "microphone " + voiceOrigin + "; autoplay " + voiceOrigin;
           dialog.showModal();
           document.documentElement.classList.add("voice-is-open");
           container.appendChild(frame);
