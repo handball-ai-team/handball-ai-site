@@ -898,7 +898,7 @@
       </div>
       <p id="voice-help">Mic on, talk like you would on the phone. Close this window any time to hang up.</p>
       <div class="voice-frame"></div>
-      <p class="voice-fallback">Trouble connecting? <a class="voice-newtab" href="https://voice.handballai.tech/" target="_blank" rel="noopener noreferrer">Open the voice assistant in a new tab</a> or <a href="https://wa.me/61404557261" target="_blank" rel="noopener noreferrer">text Mark</a>.</p>
+      <p class="voice-fallback">Trouble connecting? <a class="voice-newtab" href="https://voice.handballai.tech/" target="_blank" rel="noopener noreferrer">Open the voice assistant in a new tab</a> or <a href="mailto:hello@handballai.tech">email us</a>.</p>
     </dialog>
 
     <script>
@@ -920,6 +920,11 @@
           container.appendChild(frame);
         });
         dialog.querySelector(".voice-close").addEventListener("click", function () { dialog.close(); });
+        window.addEventListener("message", function (event) {
+          var frame = container.querySelector("iframe");
+          if (!dialog.open || !frame || event.origin !== voiceOrigin || event.source !== frame.contentWindow) return;
+          if (event.data && typeof event.data === "object" && event.data.type === "elsa:close") dialog.close();
+        });
         dialog.addEventListener("click", function (event) {
           var bounds = dialog.getBoundingClientRect();
           if (event.target === dialog && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) dialog.close();
