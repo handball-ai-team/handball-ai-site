@@ -1961,6 +1961,36 @@ textarea {
   box-shadow: 0 14px 30px rgba(31, 168, 85, 0.3);
 }
 
+/* Talk to Elsa: same popup as the hero button */
+.hbx-elsa {
+  color: var(--ink);
+  background: #fff;
+  box-shadow: 0 14px 30px rgba(17, 17, 47, 0.18), inset 0 0 0 2px var(--ink);
+  font-weight: 700;
+  cursor: pointer;
+}
+.hbx-elsa:hover { background: #fffbea; }
+.hbx-elsa-orb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, #fffbe8 0%, #ffe28a 28%, #f5b829 62%, #c9860f 100%);
+  box-shadow: 0 0 0 0 rgba(245, 184, 41, 0.5);
+  animation: hbx-elsa-pulse 2.4s ease-out infinite;
+}
+@keyframes hbx-elsa-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(245, 184, 41, 0.55); }
+  70%, 100% { box-shadow: 0 0 0 9px rgba(245, 184, 41, 0); }
+}
+.final-cta.hbx .hbx-elsa-note {
+  margin: 14px auto 0;
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hbx-elsa-orb { animation: none; }
+}
+
 .final-cta.hbx .hbx-picked {
   min-height: 22px;
   margin: 16px auto 0;
@@ -2061,6 +2091,8 @@ textarea {
   .cta-actions {
     flex-direction: column;
   }
+
+  .cta-actions .hbx-elsa { order: -1; }
 
   .hbx-job {
     padding: 9px 14px;
@@ -4271,6 +4303,310 @@ html.voice-is-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .voice-open-arrow, .voice-cta-curl, .voice-cta-text { animation: none; }
 }
+
+/* Elsa greeting: her gold orb pops up above the hero button, buzzes like a phone,
+   a glass pill stretches out of it, and sound bars move in the orb while she "talks". */
+.voice-cta { position: relative; }
+.elsa-bubble {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 16px);
+  z-index: 5;
+  width: min(370px, calc(100vw - 32px));
+}
+.elsa-bubble[hidden] { display: none; }
+.elsa-bubble-open {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #fff;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.elsa-bubble-open:focus-visible { outline: 2px solid #ffd873; outline-offset: 4px; border-radius: 30px; }
+
+/* The orb: Elsa's "face" */
+.elsa-orb {
+  position: relative;
+  z-index: 2;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, #fffbe8 0%, #ffe28a 28%, #f5b829 62%, #c9860f 100%);
+  box-shadow: 0 0 0 0 rgba(255, 216, 107, 0.5), 0 10px 30px rgba(245, 184, 41, 0.45), inset 0 -4px 10px rgba(150, 90, 0, 0.35);
+  scale: 0;
+}
+.elsa-bubble.is-in .elsa-orb {
+  animation: elsa-pop 0.5s cubic-bezier(0.3, 1.6, 0.5, 1) forwards, elsa-breathe 2.4s ease-out 0.5s infinite;
+}
+.elsa-bubble.is-in.is-buzz .elsa-orb {
+  animation: elsa-pop 0.5s cubic-bezier(0.3, 1.6, 0.5, 1) forwards, elsa-breathe 2.4s ease-out 0.5s infinite, elsa-buzz 0.6s ease-in-out;
+}
+.elsa-orb-bars { display: flex; align-items: center; gap: 3px; height: 22px; }
+.elsa-orb-bars i {
+  width: 4px;
+  height: 22px;
+  border-radius: 2px;
+  background: #4a3000;
+  opacity: 0.7;
+  scale: 1 0.22;
+  transition: scale 0.3s ease;
+}
+.elsa-bubble.is-talking .elsa-orb-bars i { animation: elsa-bar 0.7s ease-in-out infinite; }
+.elsa-bubble.is-talking .elsa-orb-bars i:nth-child(2) { animation-duration: 0.55s; animation-delay: 0.1s; }
+.elsa-bubble.is-talking .elsa-orb-bars i:nth-child(3) { animation-duration: 0.8s; animation-delay: 0.2s; }
+.elsa-bubble.is-talking .elsa-orb-bars i:nth-child(4) { animation-duration: 0.6s; animation-delay: 0.05s; }
+
+/* The glass pill that stretches out of the orb */
+.elsa-pill {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  margin-left: -22px;
+  padding: 12px 40px 12px 34px;
+  border: 1px solid rgba(255, 216, 107, 0.45);
+  border-radius: 26px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.03)), rgba(17, 22, 44, 0.72);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  backdrop-filter: blur(14px) saturate(150%);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.25, 1.15), opacity 0.2s ease, border-color 0.2s ease;
+}
+.elsa-bubble.is-open .elsa-pill { opacity: 1; transform: none; }
+.elsa-bubble-open:hover .elsa-pill { border-color: rgba(255, 216, 107, 0.85); }
+.elsa-bubble-name { color: #ffd873; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; }
+.elsa-bubble-name span { color: #aeb7d6; font-weight: 500; }
+.elsa-bubble-text { min-height: 2.8em; font-size: 15px; line-height: 1.4; }
+.elsa-bubble-dots { display: none; align-items: center; gap: 4px; height: 2.8em; }
+.elsa-bubble.is-typing .elsa-bubble-dots { display: flex; }
+.elsa-bubble.is-typing .elsa-bubble-text { display: none; }
+.elsa-bubble-dots span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #aeb7d6;
+  animation: elsa-dot 1s ease-in-out infinite;
+}
+.elsa-bubble-dots span:nth-child(2) { animation-delay: 0.15s; }
+.elsa-bubble-dots span:nth-child(3) { animation-delay: 0.3s; }
+
+/* Close button sits on the pill's corner, only once the pill is out */
+.elsa-bubble-close {
+  position: absolute;
+  top: -10px;
+  right: -6px;
+  z-index: 3;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(255, 216, 107, 0.45);
+  border-radius: 50%;
+  background: #141b33;
+  color: #d5dbef;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease 0.3s;
+}
+.elsa-bubble.is-open .elsa-bubble-close { opacity: 1; pointer-events: auto; }
+.elsa-bubble-close:hover { background: #242a3c; color: #fff; }
+.elsa-bubble-close:focus-visible { outline: 2px solid #ffd873; outline-offset: 2px; }
+
+@keyframes elsa-pop { from { scale: 0; } to { scale: 1; } }
+@keyframes elsa-buzz {
+  0%, 100% { rotate: 0deg; }
+  15% { rotate: -14deg; }
+  30% { rotate: 12deg; }
+  45% { rotate: -9deg; }
+  60% { rotate: 6deg; }
+  75% { rotate: -3deg; }
+}
+@keyframes elsa-breathe {
+  0% { box-shadow: 0 0 0 0 rgba(255, 216, 107, 0.5), 0 10px 30px rgba(245, 184, 41, 0.45), inset 0 -4px 10px rgba(150, 90, 0, 0.35); }
+  70%, 100% { box-shadow: 0 0 0 14px rgba(255, 216, 107, 0), 0 10px 30px rgba(245, 184, 41, 0.45), inset 0 -4px 10px rgba(150, 90, 0, 0.35); }
+}
+@keyframes elsa-bar {
+  0%, 100% { scale: 1 0.22; }
+  50% { scale: 1 1; }
+}
+@keyframes elsa-dot {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .elsa-orb, .elsa-bubble.is-in .elsa-orb, .elsa-bubble.is-in.is-buzz .elsa-orb { scale: 1; animation: none; }
+  .elsa-pill, .elsa-bubble-close { transition: none; }
+  .elsa-orb-bars i, .elsa-bubble-dots span { animation: none; }
+}
+
+/* After the demo, the orb lands on the button instead of popping in */
+.elsa-bubble.is-in.is-landed .elsa-orb { scale: 1; animation: elsa-breathe 2.4s ease-out infinite; }
+.elsa-flyer {
+  position: fixed;
+  z-index: 50;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, #fffbe8 0%, #ffe28a 28%, #f5b829 62%, #c9860f 100%);
+  box-shadow: 0 0 0 6px rgba(255, 216, 107, 0.2), 0 10px 30px rgba(245, 184, 41, 0.55);
+  pointer-events: none;
+}
+
+/* Elsa demo on the "Dave's plumbing" card: missed call -> Elsa answers -> summary to Dave */
+
+.hero-map.ed-ring { animation: ed-ring 0.14s linear 8; }
+@keyframes ed-ring {
+  0%, 100% { translate: 0 0; rotate: 0deg; }
+  25% { translate: -3px 0; rotate: -0.8deg; }
+  75% { translate: 3px 0; rotate: 0.8deg; }
+}
+
+.ed { position: absolute; inset: 0; z-index: 6; pointer-events: none; }
+.ed > * { pointer-events: auto; }
+
+/* 1. Missed-call notification */
+.ed-note {
+  position: absolute; left: 14px; right: 14px; top: calc(var(--ed-top) - 6px);
+  display: flex; align-items: center; gap: 12px; padding: 11px 14px;
+  border-radius: 20px; background: rgba(250, 250, 252, 0.88);
+  -webkit-backdrop-filter: blur(18px) saturate(180%); backdrop-filter: blur(18px) saturate(180%);
+  box-shadow: 0 14px 36px rgba(17, 17, 47, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  color: #3d3d46; font: 13px/1.3 Inter, system-ui, sans-serif;
+  transform-origin: left center;
+  animation: ed-drop 0.6s cubic-bezier(0.3, 1.5, 0.5, 1) both;
+}
+.ed-note b { color: #111; font-size: 15px; }
+.ed-note-b { flex: 1; display: grid; }
+.ed-note-m { display: flex; justify-content: space-between; color: #6b6b74; font-size: 11px; letter-spacing: 0.04em; }
+.ed-note-ic {
+  flex: none; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 10px;
+  background: linear-gradient(#5ee07a, #28b84a); font-size: 19px;
+  animation: ed-wiggle 0.3s ease-in-out 4;
+}
+.ed-note.ed-eaten { transition: transform 0.35s ease-in, opacity 0.35s ease-in; transform: translateX(-20%) scale(0.12); opacity: 0; }
+@keyframes ed-drop { from { transform: translateY(-36px) scale(0.9); opacity: 0; } }
+@keyframes ed-wiggle { 50% { rotate: -12deg; } }
+
+/* 2. Elsa's orb */
+.ed-orb {
+  position: absolute; z-index: 3; left: 24px; top: calc(var(--ed-top) + 2px);
+  display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, #fffbe8 0%, #ffe28a 28%, #f5b829 62%, #c9860f 100%);
+  box-shadow: 0 0 0 6px rgba(255, 216, 107, 0.2), 0 8px 22px rgba(245, 184, 41, 0.5);
+}
+.ed-orb.ed-roll { animation: ed-roll 0.75s cubic-bezier(0.25, 1.2, 0.4, 1) both; }
+.ed-orb.ed-gulp { animation: ed-gulp 0.4s ease; }
+.ed-orb.ed-dock {
+  top: calc(var(--ed-top) + 6px); width: 36px; height: 36px;
+  transition: top 0.5s cubic-bezier(0.3, 1.2, 0.4, 1), width 0.5s, height 0.5s, opacity 0.4s;
+}
+.ed-orb.ed-talk { animation: ed-bob 0.6s ease-in-out infinite; }
+.ed-orb b { display: flex; align-items: center; gap: 3px; height: 16px; }
+.ed-orb i { width: 3px; height: 16px; border-radius: 2px; background: #4a3000; opacity: 0.75; scale: 1 0.25; }
+.ed-orb.ed-talk i { animation: ed-bar 0.6s ease-in-out infinite; }
+.ed-orb.ed-talk i:nth-child(2) { animation-duration: 0.45s; animation-delay: 0.1s; }
+.ed-orb.ed-talk i:nth-child(3) { animation-duration: 0.7s; animation-delay: 0.2s; }
+.ed-orb.ed-talk i:nth-child(4) { animation-duration: 0.5s; animation-delay: 0.05s; }
+.ed-orb.ed-gone { opacity: 0; }
+@keyframes ed-roll { from { translate: -150px 0; rotate: -420deg; } }
+@keyframes ed-gulp { 50% { scale: 1.3; } }
+@keyframes ed-bob { 50% { scale: 1.12; } }
+@keyframes ed-bar { 0%, 100% { scale: 1 0.25; } 50% { scale: 1 1; } }
+
+/* 3. The call, as chat */
+.ed-panel {
+  position: absolute; left: 12px; right: 12px; top: calc(var(--ed-top) - 6px); bottom: 14px;
+  display: flex; flex-direction: column; border-radius: 18px;
+  border: 1px solid rgba(255, 216, 107, 0.5);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02)), rgba(17, 22, 44, 0.96);
+  box-shadow: 0 20px 50px rgba(17, 17, 47, 0.45);
+  color: #fff; font-family: Inter, system-ui, sans-serif;
+  clip-path: circle(0 at 42px 30px);
+  transition: clip-path 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+}
+.ed-panel.ed-open { clip-path: circle(150% at 42px 30px); }
+.ed-panel.ed-gone { opacity: 0; }
+.ed-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 14px 10px 62px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #aeb7d6; font-size: 13px;
+}
+.ed-head b { color: #ffd873; }
+.ed-live { color: #5ee07a; font-size: 12px; animation: ed-blink 1.2s steps(2) infinite; }
+.ed-chat {
+  flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px;
+  padding: 12px; overflow: hidden;
+}
+.ed-panel.ed-fold .ed-chat { transform: scaleY(0.1); opacity: 0; transition: transform 0.45s ease-in, opacity 0.45s ease-in; }
+.ed-msg {
+  max-width: 82%; padding: 9px 13px; border-radius: 16px; font-size: 14px; line-height: 1.35;
+  animation: ed-pop 0.4s cubic-bezier(0.3, 1.5, 0.5, 1) both;
+}
+.ed-caller { align-self: flex-end; border-bottom-right-radius: 4px; background: #fff; color: #11112f; transform-origin: right bottom; }
+.ed-elsa {
+  align-self: flex-start; border: 1px solid rgba(255, 216, 107, 0.4); border-bottom-left-radius: 4px;
+  background: rgba(255, 216, 107, 0.16); transform-origin: left bottom;
+}
+.ed-dots { display: flex; gap: 4px; padding: 13px 14px; }
+.ed-dots i { width: 6px; height: 6px; border-radius: 50%; background: #ffd873; animation: ed-dot 1s ease-in-out infinite; }
+.ed-dots i:nth-child(2) { animation-delay: 0.15s; }
+.ed-dots i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes ed-pop { from { scale: 0.5; opacity: 0; } }
+@keyframes ed-dot { 0%, 60%, 100% { translate: 0 0; opacity: 0.5; } 30% { translate: 0 -4px; opacity: 1; } }
+@keyframes ed-blink { 50% { opacity: 0.35; } }
+
+/* 4. Summary card that flies to "Send Dave a summary" */
+.ed-sum {
+  position: absolute; z-index: 4; left: 50%; top: calc(var(--ed-top) + 56px); translate: -50% 0;
+  display: grid; gap: 3px; width: min(270px, 82%); padding: 12px 14px;
+  border-left: 4px solid #14b86f; border-radius: 14px; background: #fff; color: #11112f;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35); font: 13px/1.35 Inter, system-ui, sans-serif;
+  animation: ed-pop 0.45s cubic-bezier(0.3, 1.5, 0.5, 1) both;
+}
+.ed-sum > span { animation: ed-line 0.3s ease-out both; }
+.ed-sum > span:nth-child(2) { animation-delay: 0.2s; }
+.ed-sum > span:nth-child(3) { animation-delay: 0.35s; }
+.ed-sum > span:nth-child(4) { animation-delay: 0.5s; }
+.ed-sum-h { color: #078653; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+@keyframes ed-line { from { translate: -8px 0; opacity: 0; } }
+
+/* 5. Steps tick off, Dave keeps the call */
+.mp-steps li.ed-hot { border-radius: 8px; background: rgba(255, 216, 107, 0.35); }
+.mp-steps li.ed-hit { animation: ed-flash 0.7s ease; }
+.mp-steps li.ed-hit .mp-a { display: inline-block; animation: ed-tick 0.5s cubic-bezier(0.3, 1.8, 0.5, 1); }
+.mp-steps li.ed-you .mp-a { display: inline-block; animation: ed-tick 0.6s ease 2; }
+@keyframes ed-flash { 30% { background: rgba(20, 184, 111, 0.2); } }
+@keyframes ed-tick { 40% { scale: 1.35; } }
+
+/* 6. Call to action */
+.ed-cta {
+  position: absolute; z-index: 7; left: 50%; bottom: -24px; translate: -50% 0;
+  display: inline-flex; align-items: center; gap: 10px; padding: 11px 20px 11px 11px;
+  border: 0; border-radius: 999px; background: #ffd86b; color: #11112f;
+  font: 700 15px Inter, system-ui, sans-serif; white-space: nowrap; cursor: pointer;
+  box-shadow: 0 10px 30px rgba(255, 216, 107, 0.45);
+  animation: ed-pop 0.5s cubic-bezier(0.3, 1.5, 0.5, 1) both, ed-glow 1.8s ease-in-out 0.5s infinite;
+}
+.ed-cta-orb {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, #fffbe8 0%, #ffe28a 28%, #f5b829 62%, #c9860f 100%);
+  box-shadow: 0 0 0 2px rgba(17, 17, 47, 0.12);
+}
+@keyframes ed-glow { 50% { box-shadow: 0 10px 40px rgba(255, 216, 107, 0.85), 0 0 0 6px rgba(255, 216, 107, 0.25); } }
 
 /* Hero pill: dark glass to sit on the photo background. Final CTA pill unchanged. */
 .hero .eyebrow {

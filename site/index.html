@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="/assets/js/analytics.js?v=20261031-2"></script>
+    <script src="/assets/js/elsa-demo.js?v=20261110-2" defer></script>
     <title>Handball AI – Business Websites &amp; AI Automation Australia</title>
     <meta name="description" content="Handball AI sets up practical AI tools for Australian small businesses: missed enquiries, customer replies, paperwork, and handoffs.">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -45,8 +46,19 @@
                 <svg class="voice-cta-curl" viewBox="0 0 44 30" aria-hidden="true" focusable="false"><path d="M41 22c-9 5-24 6-34-6M7 16l1 8M7 16l8 1" /></svg>
                 <span class="voice-cta-text">our AI receptionist. Give her a go!</span>
               </p>
+              <div class="elsa-bubble" id="elsa-bubble" hidden>
+                <button class="elsa-bubble-open" type="button" aria-label="Elsa, our AI receptionist, says: G'day, I'm Elsa. Want to hear how I'd answer your calls? Talk to Elsa">
+                  <span class="elsa-orb" aria-hidden="true"><span class="elsa-orb-bars"><i></i><i></i><i></i><i></i></span></span>
+                  <span class="elsa-pill" aria-hidden="true">
+                    <span class="elsa-bubble-name">Elsa <span>&middot; AI receptionist</span></span>
+                    <span class="elsa-bubble-dots"><span></span><span></span><span></span></span>
+                    <span class="elsa-bubble-text" data-line="G'day, I'm Elsa. Want to hear how I'd answer your calls?" data-line-after="That was me! Want to hear how I'd answer your calls?"></span>
+                  </span>
+                </button>
+                <button class="elsa-bubble-close" type="button" aria-label="Dismiss Elsa's message">&times;</button>
+              </div>
             </div>
-            <a class="hero-scroll" href="#example">See it in action <span aria-hidden="true">&darr;</span></a>
+            <a class="hero-scroll" href="#example">See an example <span aria-hidden="true">&darr;</span></a>
           </div>
 
           <aside class="hero-map" aria-label="Example: mapping a plumber's enquiry workflow">
@@ -696,7 +708,9 @@
           <div class="cta-actions">
             <a class="button hbx-email" href="mailto:hello@handballai.tech?subject=Handball%20AI%20enquiry">Email us</a>
             <a class="button hbx-wa" href="https://wa.me/61404557261?text=G%27day%20Mark%2C%20I%27ve%20got%20a%20job%20I%27d%20like%20to%20handball." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.4-.3Z"/></svg> Text Mark</a>
+            <button class="button hbx-elsa" type="button" aria-haspopup="dialog" aria-controls="voice-dialog"><span class="hbx-elsa-orb" aria-hidden="true"></span>Talk to Elsa</button>
           </div>
+          <p class="hbx-elsa-note">Rather talk? Tell Elsa and we'll call you back.</p>
           <p class="hbx-picked" aria-live="polite"></p>
         </div>
       </section>
@@ -909,6 +923,10 @@
         var button = document.querySelector(".voice-open");
         var dialog = document.getElementById("voice-dialog");
         var container = dialog.querySelector(".voice-frame");
+        var bubble = document.getElementById("elsa-bubble");
+        var card = document.querySelector(".hero-map");
+        var flyer = null, introCta = null, introStarted = false;
+        var opener = null;
         // Real site talks to real Elsa. Any other host (staging, local preview) uses the isolated staging Elsa.
         var live = location.hostname === "handballai.tech" || location.hostname === "www.handballai.tech";
         var voiceOrigin = live ? "https://voice.handballai.tech" : "https://voice-ai-receptionist-staging.handballai-au.workers.dev";
@@ -917,6 +935,8 @@
         dialog.querySelector(".voice-newtab").href = voiceUrl;
         function openElsa() {
           if (dialog.open) return;
+          opener = document.activeElement;
+          stopIntro();
           if (location.hash !== "#elsa") history.replaceState(null, "", location.pathname + location.search + "#elsa");
           var frame = document.createElement("iframe");
           frame.src = voiceUrl;
@@ -935,6 +955,155 @@
         }
         window.addEventListener("hashchange", openFromLink);
         openFromLink();
+
+        // Elsa intro, once per visit: she acts out a call on Dave's card,
+        // then her orb flies to the "Talk to Elsa" button and says hi.
+        // Opening Elsa at any point (button, menu, #elsa, bubble) stops it straight away.
+        var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        function introSeen(mark) {
+          try {
+            if (mark) sessionStorage.setItem("elsa-intro", "1");
+            return sessionStorage.getItem("elsa-intro") === "1";
+          } catch (_) { return false; }
+        }
+        function stopIntro() {
+          introStarted = true;
+          introSeen(true);
+          if (window.handballElsaDemo) window.handballElsaDemo.stop();
+          if (flyer) { flyer.remove(); flyer = null; }
+          if (introCta) { introCta.remove(); introCta = null; }
+          dismissBubble();
+        }
+        function dismissBubble() {
+          bubble.classList.remove("is-in", "is-landed", "is-buzz", "is-open", "is-typing", "is-talking");
+          bubble.hidden = true;
+        }
+        function bubbleFits() {
+          // The bubble's landing spot must be fully visible, below the sticky header.
+          bubble.hidden = false;
+          var spot = bubble.getBoundingClientRect();
+          bubble.hidden = true;
+          var header = document.querySelector(".site-header");
+          var top = header ? header.getBoundingClientRect().bottom : 0;
+          return spot.top > top && button.getBoundingClientRect().bottom < window.innerHeight;
+        }
+        function typeLine(el, line, done) {
+          var i = 0;
+          (function next() {
+            if (bubble.hidden) return;
+            el.textContent = line.slice(0, ++i);
+            if (i < line.length) setTimeout(next, /[,.?!]/.test(line[i - 1]) ? 220 : 32);
+            else done();
+          })();
+        }
+        function later(ms, step) {
+          setTimeout(function () { if (!bubble.hidden) step(); }, ms);
+        }
+        function showBubble(landed) {
+          if (dialog.open) return;
+          var text = bubble.querySelector(".elsa-bubble-text");
+          var line = text.getAttribute(landed ? "data-line-after" : "data-line");
+          var list = bubble.classList;
+          bubble.hidden = false;
+          if (calm) {
+            text.textContent = line;
+            list.add("is-in", "is-open");
+            return;
+          }
+          if (landed) {
+            list.add("is-in", "is-landed");
+            later(150, function () { list.add("is-open", "is-typing"); });
+            later(1000, talk);
+          } else {
+            requestAnimationFrame(function () { list.add("is-in"); });
+            later(550, function () { list.add("is-buzz"); });
+            later(1150, function () { list.add("is-open", "is-typing"); });
+            later(2150, talk);
+          }
+          function talk() {
+            list.remove("is-typing");
+            list.add("is-talking");
+            typeLine(text, line, function () { list.remove("is-talking"); });
+          }
+        }
+        function flyToButton() {
+          var from = card.getBoundingClientRect();
+          bubble.hidden = false;
+          var to = bubble.querySelector(".elsa-orb").getBoundingClientRect();
+          bubble.hidden = true;
+          var x0 = from.left + from.width / 2 - 23, y0 = from.top + from.height / 2 - 23;
+          var dx = to.left + to.width / 2 - 23 - x0, dy = to.top + to.height / 2 - 23 - y0;
+          flyer = document.createElement("span");
+          flyer.className = "elsa-flyer";
+          flyer.style.left = x0 + "px";
+          flyer.style.top = y0 + "px";
+          document.body.appendChild(flyer);
+          flyer.animate([
+            { transform: "scale(0)" },
+            { transform: "scale(1)", offset: 0.2 },
+            { transform: "translate(" + dx * 0.5 + "px," + (dy * 0.5 - 120) + "px) scale(1.15)", offset: 0.6 },
+            { transform: "translate(" + dx + "px," + dy + "px) scale(1.26)" }
+          ], { duration: 1200, easing: "ease-in-out", fill: "forwards" }).finished.then(function () {
+            if (!flyer) return;
+            flyer.remove();
+            flyer = null;
+            showBubble(true);
+          });
+        }
+        function showIntroCta() {
+          // Phones: the button is off screen by now, so invite them right under the card.
+          introCta = document.createElement("button");
+          introCta.type = "button";
+          introCta.className = "ed-cta";
+          introCta.innerHTML = '<span class="ed-cta-orb"></span>Hear Elsa yourself <span aria-hidden="true">&rarr;</span>';
+          introCta.addEventListener("click", function () {
+            openElsa();
+            if (window.handballAnalytics) window.handballAnalytics.capture("elsa_opened");
+          });
+          card.appendChild(introCta);
+        }
+        function startIntro() {
+          if (introStarted || introSeen() || dialog.open || location.hash === "#elsa") return;
+          introStarted = true;
+          if (calm || !window.handballElsaDemo) { introSeen(true); showBubble(false); return; }
+          window.handballElsaDemo.play(card).then(function (result) {
+            if (result !== "done" || dialog.open) return;
+            // Only counts as seen once watched to the end. Leave halfway and it plays again next visit.
+            introSeen(true);
+            if (bubbleFits()) flyToButton(); else showIntroCta();
+          });
+        }
+        bubble.querySelector(".elsa-bubble-open").addEventListener("click", function () {
+          openElsa();
+          if (window.handballAnalytics) window.handballAnalytics.capture("elsa_opened");
+        });
+        bubble.querySelector(".elsa-bubble-close").addEventListener("click", dismissBubble);
+        var contactElsa = document.querySelector(".hbx-elsa");
+        if (contactElsa) contactElsa.addEventListener("click", function () {
+          openElsa();
+          if (window.handballAnalytics) window.handballAnalytics.capture("elsa_opened");
+        });
+        // Start 2.5s after landing, once Dave's card is properly on screen.
+        // Pause while the card is scrolled away (or the tab is hidden), carry on when it's back.
+        var introReady = false, cardInView = false, cardShowing = true;
+        function syncDemo() {
+          var demo = window.handballElsaDemo;
+          if (!demo) return;
+          if (cardShowing && !document.hidden) demo.resume(); else demo.pause();
+        }
+        setTimeout(function () { introReady = true; if (cardInView) startIntro(); }, 2500);
+        if ("IntersectionObserver" in window) {
+          new IntersectionObserver(function (entries) {
+            var ratio = entries[0].intersectionRatio;
+            cardInView = ratio >= 0.6;
+            cardShowing = ratio >= 0.3;
+            if (cardInView && introReady) startIntro();
+            syncDemo();
+          }, { threshold: [0, 0.3, 0.6] }).observe(card);
+        } else {
+          cardInView = true;
+        }
+        document.addEventListener("visibilitychange", syncDemo);
         dialog.querySelector(".voice-close").addEventListener("click", function () { dialog.close(); });
         window.addEventListener("message", function (event) {
           var frame = container.querySelector("iframe");
@@ -949,7 +1118,8 @@
           container.replaceChildren();
           document.documentElement.classList.remove("voice-is-open");
           if (location.hash === "#elsa") history.replaceState(null, "", location.pathname + location.search);
-          button.focus({ preventScroll: true });
+          var back = opener && opener !== document.body && opener.isConnected ? opener : button;
+          back.focus({ preventScroll: true });
         });
       })();
     </script>
