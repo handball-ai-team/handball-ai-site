@@ -917,6 +917,7 @@
         dialog.querySelector(".voice-newtab").href = voiceUrl;
         function openElsa() {
           if (dialog.open) return;
+          if (location.hash !== "#elsa") history.replaceState(null, "", location.pathname + location.search + "#elsa");
           var frame = document.createElement("iframe");
           frame.src = voiceUrl;
           frame.title = "Handball AI voice assistant";
