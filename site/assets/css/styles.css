@@ -2359,8 +2359,14 @@ textarea {
   box-shadow: 0 8px 20px rgba(255, 216, 107, 0.4);
 }
 
-section[id] {
+section[id],
+#elsa {
   scroll-margin-top: 96px;
+}
+
+/* Hero already shows the Elsa button; keep the nav on one line on small laptops */
+@media (max-width: 1039px) {
+  .site-nav a[href="#elsa"] { display: none; }
 }
 
 /* Hero: start under the floating nav */
