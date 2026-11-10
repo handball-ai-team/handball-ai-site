@@ -25,6 +25,7 @@
           <a href="#process">How it works</a>
           <a href="#example">Example</a>
           <a href="#faq">Questions</a>
+          <a href="#elsa">Try Elsa</a>
         </nav>
 
         <a class="nav-cta" href="#contact">Handball us a job <span aria-hidden="true">&rarr;</span></a>
@@ -38,7 +39,7 @@
             <p class="eyebrow"><span></span> Websites and AI automation for Aussie businesses</p>
             <h1>Show us your workflow. We'll automate the boring bits.</h1>
             <p class="hero-copy">Business websites built for you. Practical AI automation for calls, forms, follow-ups, paperwork, and the repeat jobs that waste your week.</p>
-            <div class="voice-cta">
+            <div class="voice-cta" id="elsa">
               <button class="voice-open" type="button" aria-haspopup="dialog" aria-controls="voice-dialog" aria-describedby="voice-cta-note">Talk to Elsa <span class="voice-open-arrow" aria-hidden="true">&rarr;</span></button>
               <p class="voice-cta-note" id="voice-cta-note">
                 <svg class="voice-cta-curl" viewBox="0 0 44 30" aria-hidden="true" focusable="false"><path d="M41 22c-9 5-24 6-34-6M7 16l1 8M7 16l8 1" /></svg>
@@ -724,6 +725,7 @@
           <a href="#process">How it works</a>
           <a href="#example">Example</a>
           <a href="#faq">Questions</a>
+          <a href="#elsa">Try Elsa</a>
         </nav>
       </div>
 
@@ -913,7 +915,8 @@
         var campaign = new URLSearchParams(window.handballAnalytics ? window.handballAnalytics.campaign : {}).toString();
         var voiceUrl = voiceOrigin + "/" + (campaign ? "?" + campaign : "");
         dialog.querySelector(".voice-newtab").href = voiceUrl;
-        button.addEventListener("click", function () {
+        function openElsa() {
+          if (dialog.open) return;
           var frame = document.createElement("iframe");
           frame.src = voiceUrl;
           frame.title = "Handball AI voice assistant";
@@ -921,7 +924,16 @@
           dialog.showModal();
           document.documentElement.classList.add("voice-is-open");
           container.appendChild(frame);
-        });
+        }
+        button.addEventListener("click", openElsa);
+        // handballai.tech/#elsa opens Elsa straight away (for emails and posts).
+        function openFromLink() {
+          if (location.hash !== "#elsa" || dialog.open) return;
+          openElsa();
+          if (window.handballAnalytics) window.handballAnalytics.capture("elsa_opened");
+        }
+        window.addEventListener("hashchange", openFromLink);
+        openFromLink();
         dialog.querySelector(".voice-close").addEventListener("click", function () { dialog.close(); });
         window.addEventListener("message", function (event) {
           var frame = container.querySelector("iframe");
@@ -935,6 +947,7 @@
         dialog.addEventListener("close", function () {
           container.replaceChildren();
           document.documentElement.classList.remove("voice-is-open");
+          if (location.hash === "#elsa") history.replaceState(null, "", location.pathname + location.search);
           button.focus({ preventScroll: true });
         });
       })();
