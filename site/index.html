@@ -10,7 +10,7 @@
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="preload" href="assets/fonts/bricolage-grotesque-3.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/inter-7.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="assets/css/styles.css?v=20261114-hero-nudge">
+    <link rel="stylesheet" href="assets/css/styles.css?v=20261114-mobile-menu">
   </head>
   <body>
     <header class="site-header" data-theme="dark">
@@ -30,7 +30,21 @@
         </nav>
 
         <a class="nav-cta" href="#contact">Handball us a job <span aria-hidden="true">&rarr;</span></a>
+
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <svg class="nav-toggle-open" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14"/></svg>
+          <svg class="nav-toggle-close" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l12 12M16 4L4 16"/></svg>
+        </button>
       </div>
+
+      <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" hidden>
+        <a href="#services">Workflows</a>
+        <a href="#industries">Who it helps</a>
+        <a href="#process">How it works</a>
+        <a href="#example">Example</a>
+        <a href="#faq">Questions</a>
+        <a href="#elsa">Try Elsa</a>
+      </nav>
     </header>
 
     <main id="top">
@@ -1132,6 +1146,44 @@
           if (navigator.clipboard) { navigator.clipboard.writeText(text).then(done, function () {}); }
         });
       });
+    </script>
+    <div class="elsa-bar" id="elsa-bar" aria-hidden="true">
+      <button class="elsa-bar-btn" type="button" tabindex="-1">Talk to Elsa <span aria-hidden="true">&rarr;</span></button>
+    </div>
+
+    <script>
+      (function () {
+        // Mobile menu
+        var header = document.querySelector(".site-header");
+        var toggle = document.querySelector(".nav-toggle");
+        var menu = document.getElementById("mobile-menu");
+        function setMenu(open) {
+          menu.hidden = !open;
+          toggle.setAttribute("aria-expanded", String(open));
+          toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+          header.classList.toggle("menu-open", open);
+        }
+        toggle.addEventListener("click", function () { setMenu(menu.hidden); });
+        menu.addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
+        document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !menu.hidden) { setMenu(false); toggle.focus(); } });
+        document.addEventListener("click", function (e) { if (!menu.hidden && !header.contains(e.target)) setMenu(false); });
+        window.matchMedia("(min-width: 981px)").addEventListener("change", function (e) { if (e.matches) setMenu(false); });
+
+        // Sticky "Talk to Elsa" bar: shows once the hero is scrolled past
+        var bar = document.getElementById("elsa-bar");
+        var barBtn = bar.querySelector("button");
+        var hero = document.querySelector(".hero");
+        var main = document.querySelector(".voice-open");
+        function onScroll() {
+          var on = hero.getBoundingClientRect().bottom < 0;
+          bar.classList.toggle("is-on", on);
+          bar.setAttribute("aria-hidden", String(!on));
+          barBtn.tabIndex = on ? 0 : -1;
+        }
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+        barBtn.addEventListener("click", function () { main.click(); });
+      })();
     </script>
   </body>
 </html>

@@ -4641,3 +4641,118 @@ html.voice-is-open { overflow: hidden; }
 @media (min-width: 981px) {
   .hero-layout { min-height: calc(100vh - 200px - clamp(24px, 10vh, 100px)); }
 }
+
+/* ---------- Mobile menu and sticky "Talk to Elsa" bar (phones and tablets only) ---------- */
+.nav-toggle,
+.mobile-menu,
+.elsa-bar { display: none; }
+
+@media (max-width: 980px) {
+  .nav-shell { grid-template-columns: 1fr auto auto; gap: 8px; }
+
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    color: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+  }
+  .site-header[data-theme="light"] .nav-toggle {
+    border-color: rgba(17, 17, 47, 0.15);
+    background: rgba(17, 17, 47, 0.05);
+  }
+  .nav-toggle:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+  .nav-toggle-close,
+  .site-header.menu-open .nav-toggle-open { display: none; }
+  .site-header.menu-open .nav-toggle-close { display: block; }
+
+  .mobile-menu:not([hidden]) {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 16px;
+    right: 16px;
+    display: block;
+    padding: 6px 16px;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 18px;
+    background: #0c0d22;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+    pointer-events: auto;
+  }
+  .mobile-menu a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 4px;
+    font-size: 18px;
+    font-weight: 600;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .mobile-menu a:first-child { border-top: 0; }
+  .mobile-menu a::after { content: "\2192"; color: rgba(255, 255, 255, 0.45); }
+  .mobile-menu a:focus-visible { outline: 3px solid var(--yellow); outline-offset: -3px; border-radius: 10px; }
+
+  .elsa-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+    display: block;
+    padding: 24px 16px calc(14px + env(safe-area-inset-bottom, 0px));
+    background: linear-gradient(180deg, rgba(12, 13, 34, 0) 0%, rgba(12, 13, 34, 0.9) 55%);
+    pointer-events: none;
+    transform: translateY(110%);
+    visibility: hidden;
+    transition: transform 0.25s ease, visibility 0s linear 0.25s;
+  }
+  .elsa-bar.is-on {
+    transform: none;
+    visibility: visible;
+    transition: transform 0.25s ease;
+  }
+  html.voice-is-open .elsa-bar { display: none; }
+  .elsa-bar-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 16px 22px;
+    color: var(--ink);
+    font: inherit;
+    font-size: 17px;
+    font-weight: 800;
+    border: 0;
+    border-radius: 14px;
+    background: var(--yellow);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+    pointer-events: auto;
+  }
+  .elsa-bar-btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+  body { padding-bottom: 84px; }
+}
+
+@media (max-width: 680px) {
+  .nav-shell { padding: 8px 8px 8px 12px; }
+  .nav-cta { padding: 9px 12px; }
+  .nav-cta span { display: none; }
+  .mobile-menu:not([hidden]) { left: 10px; right: 10px; }
+}
+
+/* Very small phones: keep the H mark, drop the wordmark so the button and menu icon fit */
+@media (max-width: 380px) {
+  .nav-shell .brand span:last-child { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .elsa-bar, .elsa-bar.is-on { transition: none; }
+}
