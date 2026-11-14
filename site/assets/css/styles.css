@@ -4636,3 +4636,8 @@ html.voice-is-open { overflow: hidden; }
 @media (max-width: 380px) {
   .nav-cta { padding-left: 12px; padding-right: 12px; font-size: 13px; gap: 6px; }
 }
+/* Hero text sits a little higher on desktop: less empty photo above it.
+   Shortens the layout box only; the hero itself stays full screen height. */
+@media (min-width: 981px) {
+  .hero-layout { min-height: calc(100vh - 200px - clamp(24px, 10vh, 100px)); }
+}
