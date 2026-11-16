@@ -12,6 +12,11 @@
     var value = params.get(key);
     if (value && /^[a-z][a-z0-9_-]{0,79}$/.test(value)) campaign[key] = value;
   });
+  // The landing page passes its visitor ID to Elsa as ph_did, so both sites count one person.
+  var idPattern = /^[A-Za-z0-9_-]{8,64}$/;
+  var linkedId = '';
+  var passedId = params.get('ph_did');
+  if (voice && passedId && idPattern.test(passedId)) linkedId = passedId;
   var queue = [];
   var ready = false;
   var allowed = ['$pageview', '$pageleave', '$snapshot', 'contact_clicked', 'elsa_opened', 'page_scrolled', 'elsa_call_started', 'elsa_call_ended', 'elsa_call_failed', 'elsa_enquiry_saved'];
@@ -24,7 +29,13 @@
     if (!ready) { if (queue.length < 30) queue.push([name, properties || {}]); return; }
     try { window.posthog.capture(name, Object.assign({}, campaign, { environment: environment, site: voice ? 'voice' : 'landing' }, properties)); } catch (_) { /* Analytics must never interrupt enquiries. */ }
   }
-  window.handballAnalytics = { capture: capture, campaign: campaign };
+  function distinctId() {
+    try {
+      var id = window.posthog && typeof window.posthog.get_distinct_id === 'function' ? window.posthog.get_distinct_id() : '';
+      return typeof id === 'string' && idPattern.test(id) ? id : '';
+    } catch (_) { return ''; }
+  }
+  window.handballAnalytics = { capture: capture, campaign: campaign, distinctId: distinctId };
   ['elsa_call_started', 'elsa_call_ended', 'elsa_call_failed', 'elsa_enquiry_saved'].forEach(function (name) {
     window.addEventListener('handball:' + name, function () { capture(name); });
   });
@@ -67,6 +78,8 @@
         capture_heatmaps: false, capture_performance: false,
         enable_recording_console_log: false, cross_subdomain_cookie: false,
         persistence: 'sessionStorage',
+        // Starts Elsa's session as the landing visitor. Ignored when there is no valid ph_did.
+        bootstrap: linkedId ? { distinctID: linkedId } : {},
         session_recording: {
           maskAllInputs: true,
           maskTextSelector: '.ph-mask, [data-private], .voice-transcript-reveal, .voice-lead',

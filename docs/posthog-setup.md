@@ -21,7 +21,7 @@ Allowed labels: lowercase letters, digits, underscore and hyphen, beginning with
 ## Reports
 Filter `environment = production` for business results. Group `$pageview` by `utm_content` and `site`; compare `contact_clicked` (channel), `elsa_opened`, `elsa_call_started`, `elsa_enquiry_saved`. `elsa_call_started` is a connected voice data channel, not proof the visitor spoke. Saved enquiry events follow a confirmed successful capture; email delivery remains separate. Counts are browser events, not unique leads. Facebook messages are counted separately in Facebook.
 
-Anonymous identities are separate across hosts. Campaign comparison works across both sites; do not treat this as a stitched visitor funnel. Attribution is captured for the current page, not a persistent multi-visit attribution model.
+When a visitor opens Elsa from the landing page, the page adds their PostHog ID to the Elsa URL as `ph_did`. Elsa starts its PostHog session with that ID, so landing and Elsa events count as one person and `elsa_opened` to `elsa_call_started` to `elsa_enquiry_saved` works as a funnel. Visitors who open voice.handballai.tech directly, or who block analytics, stay separate. The ID is never stored as an event property and URLs are cut to the origin before sending. Attribution is captured for the current page, not a persistent multi-visit attribution model.
 
 ## Release
 Local checkouts predate some recorded production fixes. Rebase/cherry-pick this isolated feature onto the verified current source before staging. Preserve voice-staging automatic-builds disabled. Validate both public pages and the live enquiry flow. Do not deploy an older checkout over a newer release.

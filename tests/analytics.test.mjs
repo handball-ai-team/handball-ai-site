@@ -62,3 +62,31 @@ test('blocked SDK leaves enquiry event hooks safe and queues bounded', () => {
   delete window.posthog;
   assert.doesNotThrow(() => listeners['handball:elsa_enquiry_saved']());
 });
+test('Elsa starts as the landing visitor when a valid ph_did is passed', () => {
+  const id = '01a1e295-17ba-7065-8928-95dbb5439f45';
+  const { config } = boot('voice.handballai.tech', '/', '?utm_source=facebook&ph_did=' + id);
+  assert.equal(JSON.stringify(config.bootstrap), JSON.stringify({ distinctID: id }));
+});
+test('bad, missing or landing-side ph_did is ignored', () => {
+  assert.equal(JSON.stringify(boot('voice.handballai.tech', '/', '?ph_did=bad%20id%3Cscript%3E').config.bootstrap), '{}');
+  assert.equal(JSON.stringify(boot('voice.handballai.tech', '/', '?ph_did=short').config.bootstrap), '{}');
+  assert.equal(JSON.stringify(boot('voice.handballai.tech', '/', '').config.bootstrap), '{}');
+  assert.equal(JSON.stringify(boot('handballai.tech', '/', '?ph_did=01a1e295-17ba-7065-8928-95dbb5439f45').config.bootstrap), '{}');
+});
+test('ph_did never reaches an event', () => {
+  const id = '01a1e295-17ba-7065-8928-95dbb5439f45';
+  const { events } = boot('voice.handballai.tech', '/', '?ph_did=' + id);
+  assert.equal(JSON.stringify(events).includes(id), false);
+});
+test('distinctId returns a valid SDK id, else an empty string without throwing', () => {
+  const { window } = boot();
+  assert.equal(window.handballAnalytics.distinctId(), '');
+  window.posthog = { get_distinct_id: () => '01a1e295-17ba-7065-8928-95dbb5439f45' };
+  assert.equal(window.handballAnalytics.distinctId(), '01a1e295-17ba-7065-8928-95dbb5439f45');
+  window.posthog = { get_distinct_id: () => 'x y' };
+  assert.equal(window.handballAnalytics.distinctId(), '');
+  window.posthog = { get_distinct_id: () => { throw new Error('boom'); } };
+  assert.equal(window.handballAnalytics.distinctId(), '');
+  delete window.posthog;
+  assert.equal(window.handballAnalytics.distinctId(), '');
+});
