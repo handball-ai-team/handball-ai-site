@@ -4756,3 +4756,70 @@ html.voice-is-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .elsa-bar, .elsa-bar.is-on { transition: none; }
 }
+
+/* Nav with the "Elsa & pricing" link: keep each link on one line.
+   The hero already has the Talk to Elsa button, so "Try Elsa" drops out first on small laptops. */
+.site-nav a { white-space: nowrap; }
+@media (max-width: 1180px) {
+  .site-nav a[href="#elsa"] { display: none; }
+}
+
+
+/* ---------- Homepage "What we do": Elsa (product) + automations (service) ---------- */
+.wwd { padding: 80px 0; background: var(--paper); }
+.wwd-head { max-width: 640px; }
+.wwd-head h2 { margin: 0; font-family: var(--display); font-size: clamp(32px, 4.4vw, 50px); line-height: 1.02; letter-spacing: -0.01em; }
+.wwd-head p:not(.kicker) { margin: 12px 0 0; color: var(--muted); font-size: 18px; line-height: 1.55; }
+.wwd-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; margin-top: 36px; }
+.wwd-card { position: relative; padding: 32px; border-radius: 22px; }
+.wwd-elsa {
+  color: #fff;
+  background:
+    radial-gradient(70% 70% at 90% 0%, rgba(245, 196, 81, 0.18), rgba(245, 196, 81, 0) 70%),
+    linear-gradient(180deg, #1d1f42, #11112f);
+  box-shadow: 0 30px 70px rgba(17, 17, 47, 0.25);
+}
+.wwd-auto { border: 1px solid var(--line); background: #fff; box-shadow: 0 12px 30px rgba(20, 22, 46, 0.06); }
+.wwd-top { display: flex; align-items: center; gap: 14px; }
+.wwd-orb {
+  flex: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, #fffbe8 0%, #ffe08a 22%, #f5c451 52%, #c98a14 82%, #8a5a08 100%);
+  box-shadow: 0 0 26px rgba(245, 196, 81, 0.55), inset -6px -8px 14px rgba(90, 50, 0, 0.35);
+}
+.wwd-ico { display: flex; flex: none; align-items: center; justify-content: center; width: 56px; height: 56px; color: var(--brand-dark); border-radius: 16px; background: var(--soft-green); }
+.wwd-tag { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+.wwd-elsa .wwd-tag { color: var(--ink); background: var(--yellow); }
+.wwd-auto .wwd-tag { color: var(--brand-dark); background: var(--soft-green); }
+.wwd-card h3 { margin: 6px 0 0; font-family: var(--display); font-size: 28px; line-height: 1.05; }
+.wwd-card > p { margin: 18px 0 0; font-size: 17px; line-height: 1.55; }
+.wwd-elsa > p { color: rgba(255, 255, 255, 0.8); }
+.wwd-auto > p { color: var(--muted); }
+.wwd-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; padding: 0; list-style: none; }
+.wwd-list li { padding: 6px 12px; border-radius: 999px; font-size: 14px; font-weight: 600; }
+.wwd-elsa .wwd-list li { color: #fff; background: rgba(255, 255, 255, 0.1); }
+.wwd-auto .wwd-list li { background: var(--soft); }
+.wwd-card > p.wwd-price { margin-top: 22px; color: #fff; font-family: var(--display); }
+.wwd-price strong { font-size: 40px; }
+.wwd-price span { color: rgba(255, 255, 255, 0.75); font-family: Inter, sans-serif; font-size: 15px; }
+.wwd-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 24px; }
+.wwd-btn { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border-radius: 12px; font-size: 16px; font-weight: 800; transition: transform 0.15s ease, background 0.15s ease; }
+.wwd-btn:hover { transform: translateY(-1px); }
+.wwd-elsa .wwd-btn { color: var(--ink); background: var(--yellow); }
+.wwd-elsa .wwd-btn:hover { background: #fff; }
+.wwd-auto .wwd-btn { color: #fff; background: var(--ink); }
+.wwd-link { padding: 6px 0; color: #fff; font-weight: 700; border-bottom: 2px solid currentColor; }
+.wwd-link:hover { color: var(--yellow); }
+.wwd-btn:focus-visible, .wwd-link:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+.wwd-card > p.wwd-note { margin-top: 18px; color: var(--brand-dark); font-family: var(--hand); font-size: 22px; line-height: 1.2; }
+@media (max-width: 860px) {
+  .wwd { padding: 56px 0; }
+  .wwd-grid { grid-template-columns: 1fr; }
+  .wwd-card { padding: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wwd-btn { transition: none; }
+  .wwd-btn:hover { transform: none; }
+}
