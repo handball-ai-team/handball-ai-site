@@ -1,0 +1,14 @@
+// Production landing site (handballai.tech). Static assets only.
+// Dashboard deploy command reads this config with `npx wrangler deploy`.
+// not_found_handling serves site/404.html for unknown paths.
+// URL settings match the production dashboard; custom domains stay dashboard-managed.
+{
+  "name": "handball-ai-site",
+  "compatibility_date": "2025-01-01",
+  "workers_dev": true,
+  "preview_urls": true,
+  "assets": {
+    "directory": "./site",
+    "not_found_handling": "404-page"
+  }
+}
