@@ -1,0 +1,12 @@
+// Production landing site (handballai.tech). Static assets only.
+// The Cloudflare dashboard deploy command still sets --assets and --name.
+// not_found_handling serves site/404.html for unknown paths.
+// Codex: check this matches the dashboard (workers_dev, routes) before the first production deploy.
+{
+  "name": "handball-ai-site",
+  "compatibility_date": "2025-01-01",
+  "assets": {
+    "directory": "./site",
+    "not_found_handling": "404-page"
+  }
+}
